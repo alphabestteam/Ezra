@@ -1,0 +1,14 @@
+1. A enum is a class that allows you to define your own values to other values, so for example:
+
+class Weekday(Enum):
+    sunday = 1
+    monday = 2
+    tuesday = 3
+    ...
+
+# Access enum members
+print(Weekday.sunday)  # 1
+
+
+2. we would want to use enums if we want to group a bunch of values. giving it a distinct pro over regular values, 
+you can limit the user to certain properties, and you can give them specific attributes. 

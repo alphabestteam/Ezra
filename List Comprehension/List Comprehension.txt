@@ -1,0 +1,27 @@
+1.  list comprehension is what you shorten creating a new list from an old list.
+so for example, if you have an old list of cars, and you want to create a new list 
+that contains only cars that have the letter 'o' in them.
+
+so without list comprehension you would need to do a for loop:
+
+    cars = ['volvo', 'ford', 'mustang', 'chevi', 'opal']
+    new_list_of_cars = []
+
+    for car in cars:
+        if 'o' in car:
+            new_list_of_cars.append(car)
+
+
+however with list comprehension you can shorten that down to one line:
+
+    new_list_of_cars[car for car in cars if 'o' in car]
+
+the syntax is as following:
+
+    newlist = [expression for item in iterable if condition == True]
+
+
+
+2.  you don't need to use list comprehension, although it's a nice feature to know.
+
+

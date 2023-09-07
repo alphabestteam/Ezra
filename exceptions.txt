@@ -1,0 +1,16 @@
+1. Exceptions is when the computer runs into a problem, that problem can be anything from wrong syntax to bad logic.
+if the computer runs into one of those issues, it will stop the code and raise an Exception with a detailed explanation of the error.
+The issue is that if we know that the computer might find a mistake but we still want to continue with the program 
+we can't do anything about that. that's way they came up with try/exception, you can put the problematic code in 
+try and what the computer should do in the exception.
+
+try:
+    ....
+    ....
+    ....
+exception: 
+    "do this instead"
+
+however, it's good practice to treat each exception by itself, meaning don't just write exception, rather write exception TypeError/...
+and then we'll know what going on, and what kind of error was raised.
+

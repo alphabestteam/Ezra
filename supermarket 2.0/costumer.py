@@ -37,7 +37,7 @@ class Costumer:
             if name in item:
                 amount = int(input("Product amount: "))
                 item[name]["amount"] += amount
-                self._payment += item[name]["price"] * amount
+                self.payment += item[name]["price"] * amount
                 found = True
                 break
 
@@ -49,7 +49,7 @@ class Costumer:
             self.shopping_cart.append(
                 {product.name: {"price": product.price, "amount": amount}}
             )
-            self._payment += product.price * amount
+            self.payment += product.price * amount
 
         print(self)
 
@@ -57,7 +57,7 @@ class Costumer:
         found = False
         while not found:
             name_remove = input("Item name to remove: ")
-            for item in self._shopping_cart:
+            for item in self.shopping_cart:
                 if name_remove in item:
                     enough_product = False
                     while not enough_product:
@@ -65,11 +65,11 @@ class Costumer:
                         if item[name_remove]["amount"] >= amount_remove:
                             enough_product = True
                             item[name_remove]["amount"] -= amount_remove
-                            self._payment -= item[name_remove]["price"] * amount_remove
+                            self.payment -= item[name_remove]["price"] * amount_remove
 
                             # if you remove all of the item
                             if item[name_remove]["amount"] == 0:
-                                self._shopping_cart.remove(item)
+                                self.shopping_cart.remove(item)
                         else:
                             print("enter a sufficient amount to remove")
                     found = True

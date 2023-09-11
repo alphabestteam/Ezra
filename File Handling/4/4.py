@@ -16,4 +16,6 @@ p_config_json["data"] = data_upper
 config_json = open("Ezra/File Handling/4/config.json", "w")
 config_json.write(json.dumps(p_config_json))
 
+config_json.close()
+
 

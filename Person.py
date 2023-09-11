@@ -1,6 +1,5 @@
 import random
 
-
 class Person:
     list_names = [
         "Alice",
@@ -192,6 +191,7 @@ class Person:
     @age.setter
     def age(self, new_age: int) -> None:
         self._age = new_age
+
 
 
 

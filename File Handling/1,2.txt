@@ -1,0 +1,28 @@
+1.  the reason we don't save everything in variables in the code, is because it would cause a huge 
+mess. imagine you have a 300 page book that you want to use in the code, you can't just go and put in a variable.
+In general saving info out of the code in separate areas allows you to keep things in order, and it doesn't restrict
+the usage of the file to your code. 
+so for example a word document can be used for multiple things besides in the code.
+more than that, it allows you to store info out of the code, so even when the code stops running you will still have 
+the info saved somewhere.
+
+
+2.  in python if we want to open an external file we'll you the open() function. 
+the syntax of the open() function:
+
+        f = open("file_path.pdf", "mode")
+        print(f.read)
+
+in the first section you put the file path including the type (pdf, jpg...)
+and in the second section you put the mode of the file.
+there are 4 kinds of mode:
+
+"r" - Read, default value, it opens the file for reading and will return an error if the file doesn't exist
+"a" - Append, It will open the file for appending and will create the file if it doesn't exist.
+"w" - Write, It will open the file for writing and will create the file if it doesn't exit.
+"x" - Create, It will create the specified file, and will return if the file exists.
+
+besides that you can specify how the file should be handled (binary/txt mode)
+
+"t" - Text, default value. Text mode
+"b" - binary mode (images, videos...)

@@ -26,3 +26,5 @@ besides that you can specify how the file should be handled (binary/txt mode)
 
 "t" - Text, default value. Text mode
 "b" - binary mode (images, videos...)
+
+you can attach the modes together, so for example "rb" will read the file as binary.

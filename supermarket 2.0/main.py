@@ -34,6 +34,7 @@ customer_info = [c1.add_json(), c2.add_json(), c3.add_json()]
 
 summary = open("Ezra\supermarket 2.0\summary.json", "w")
 summary.write(json.dumps(customer_info))
+summary.close()
 
 
 

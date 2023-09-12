@@ -5,7 +5,7 @@ class Costumer:
     _shopping_cart: list
     _payment: int
 
-    def __init__(self, name: int) -> None:
+    def __init__(self, name: str) -> None:
         self._name = name
         self._shopping_cart = []
         self._payment = 0
@@ -22,11 +22,11 @@ class Costumer:
         return self._shopping_cart
 
     @property
-    def payment(self) -> int:
+    def payment(self) -> float:
         return self._payment
 
     @payment.setter
-    def payment(self, new_payment: int) -> None:
+    def payment(self, new_payment: float) -> None:
         self._payment = new_payment
 
     def add_product(self) -> None:
@@ -42,7 +42,7 @@ class Costumer:
                 break
 
         if not found:
-            price = int(input(f"({self.name}) Product price: "))
+            price = float(input(f"({self.name}) Product price: "))
             amount = int(input(f"({self.name}) Product amount: "))
 
             product = Product(name, price)

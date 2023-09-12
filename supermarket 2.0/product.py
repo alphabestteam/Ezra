@@ -1,6 +1,6 @@
 class Product:
     
-    def __init__(self, name : str, price : int) -> None:
+    def __init__(self, name : str, price : float) -> None:
         self._name = name
         self._price = price
     
@@ -13,7 +13,7 @@ class Product:
         return self._name
     
     @property
-    def price(self) -> int:
+    def price(self) -> float:
         return self._price
     
 

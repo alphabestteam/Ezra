@@ -5,7 +5,7 @@ class Monster:
     def __init__(self, name: str, level: int) -> None:
         self._name = name
         self._level = level
-        self._hp = level * 40 
+        self._hp = level * 40
         self._damage = level * 2
 
     def __str__(self) -> str:

@@ -11,7 +11,7 @@ class Costumer:
         self._payment = 0
 
     def __str__(self) -> str:
-        return f"name: {self._name}, shopping cart: {self._shopping_cart}, payment: {self._payment}"
+        return f"name: {self.name}, shopping cart: {self.shopping_cart}, payment: {self.payment}"
 
     @property
     def name(self) -> str:
@@ -29,21 +29,21 @@ class Costumer:
     def payment(self, new_payment: int) -> None:
         self._payment = new_payment
 
-    def add_product(self):
-        name = input("Product name: ")
+    def add_product(self) -> None:
+        name = input(f"({self.name}) Product name: ")
         found = False
 
         for item in self.shopping_cart:
             if name in item:
-                amount = int(input("Product amount: "))
+                amount = int(input(f"({self.name}) Product amount: "))
                 item[name]["amount"] += amount
                 self.payment += item[name]["price"] * amount
                 found = True
                 break
 
         if not found:
-            price = int(input("Product price: "))
-            amount = int(input("Product amount: "))
+            price = int(input(f"({self.name}) Product price: "))
+            amount = int(input(f"({self.name}) Product amount: "))
 
             product = Product(name, price)
             self.shopping_cart.append(
@@ -53,7 +53,7 @@ class Costumer:
 
         print(self)
 
-    def remove_product(self):
+    def remove_product(self) -> None:
         found = False
         while not found:
             name_remove = input("Item name to remove: ")
@@ -73,7 +73,13 @@ class Costumer:
                         else:
                             print("enter a sufficient amount to remove")
                     found = True
-            else:
-                print("Enter a valid item")
 
         print(self)
+
+    def add_json(self) -> list:
+        user = {
+            "name": self.name,
+            "shopping cart": [{name : {"price" : item[name]["price"], "amount" : item[name]["amount"]}} for item in self.shopping_cart for name in item],
+            "payment": self.payment,
+        }
+        return user

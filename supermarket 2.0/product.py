@@ -5,7 +5,7 @@ class Product:
         self._price = price
     
     def __str__(self) -> str:
-        return f"name: {self._name}, price: {self._price}"
+        return f"name: {self.name}, price: {self.price}"
     
     # getters
     @property

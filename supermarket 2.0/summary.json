@@ -1,0 +1,1 @@
+[{"name": "ezra", "shopping cart": [{"fish": {"price": 200, "amount": 12}}], "payment": 2400}, {"name": "moshe", "shopping cart": [{"cat": {"price": 32, "amount": 3}}], "payment": 96}, {"name": "dave", "shopping cart": [{"cat": {"price": 12, "amount": 5}}], "payment": 60}]

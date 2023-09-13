@@ -1,0 +1,56 @@
+1.  the point of a variable number of parameters (*args, **kwargs)
+is in a case that you want to add an undecided amount of variables 
+to a function. so for example if I want to init a object with an undecided
+amount of features i will use the *args variable.
+
+-- this will accept an undecided amount of variables and multiply them.
+def multiplier(*args : int) -> int:
+    result = 0
+    for number in args:
+        result *= number
+    return result
+
+
+2.  *args is a variable number of parameters that allows to input an undecided
+amount of values to a function. (NOTE the function receives the values as a tuple)
+so if you try and print args, you will get a tuple of all the values.
+
+
+3.  **kwargs is a variable number of parameters that allows you to input an undecided
+amount of key value pairs. (NOTE that the function receives the key value pair as a dictionary)
+so if you try and print kwargs, you will get a dictionary of all the key value pairs.
+
+
+4.  The difference between *args and **kwargs is that args is for a group of values
+where as kwargs is for a group of key-value pairs. so hence if you want to iterate 
+through the args variable you can do that the same way you'd iterate through a tuple.
+however, if you want to iterate through the kwargs variable, you'll need to do that 
+the same way you'd iterate through a dictionary. 
+yes, you can use the at the same time.
+
+
+5,6.  unpacking - is when you have a list of variables and you want to send them to a 
+function but have each variable saved as an individual variable, you would do that with the 
+unpack method.
+
+example (taken from GFG):
+
+def fun(a, b, c, d):
+    print(a, b, c, d)
+ 
+my_list = [1, 2, 3, 4]
+ 
+# Unpacking list into four arguments
+fun(*my_list)
+
+
+packing - is the term form *args and **kwargs, when you want to pack a bunch of 
+variables into one variable in the function.
+
+example (taken from GFG): 
+
+def mySum(*args):
+    return sum(args)
+ 
+print(mySum(1, 2, 3, 4, 5))
+print(mySum(10, 20))

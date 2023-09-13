@@ -1,0 +1,57 @@
+1.  magic functions are special methods in python that are recognizable
+by their double underscore before and after (__init__).
+The point of the magic function is to allow you to override the natural
+task that a certain function will do. so for example if you want it to be
+that every time you want to add 2 numbers it will really subtract the numbers
+you will use a magic method to do so.
+
+
+-- will change the output when you want to print an instant of say class.
+def __str__(self) -> str:
+    return f"name: {self._name}"
+
+-- if someone will try and check if one object is greater or equal to the other one
+it will return the opposite of the truth :) 
+def __ge__(self, object2) -> bool:
+    return self.a <= object2.a
+
+-- will return the length of any object that you throw it's way
+def __len__(self) -> int:
+    return len(self.item)
+
+-- will return True if the 2 object are the same
+def __eq__(self, object2) -> bool:
+    return self.a == object2.a
+
+
+2.  it will return the objects location in memory
+
+
+3.  it will check if the location in the memory is the same.
+
+
+4.  operator overloading is a kind of magic function, where you can define
+operators to do specific kind of things. (I gave an example in question 1)
+so for example if i would like to use the + operator to add 2 instances of 
+a class together, the regular + won't work because it's designed by default
+to work only on int values. however if you override it with the __add__() function
+you can change that.
+
+
+
+class Person:
+    def __init__(age, name):
+        self._age = age
+        self._name = name
+    
+    def __add__(self, other) -> object:
+        # this is where we will customize the operator
+        return Person(self._age + other._age , self._name + other._name)
+
+person1 = Person(age= 23, name= "moshe")
+person2 = Person(age= 22, name= "avi")
+
+added_peoples = person1 + person2
+
+# this will print (45, "mosheavi")
+print(added_peoples)

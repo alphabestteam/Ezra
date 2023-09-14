@@ -1,0 +1,6 @@
+e.  sometimes when you have multiple threads running at the same time
+they will try and access the same info at the same time, and that can
+cause an issue because they can change the info and that will cause an
+error to rise, that part of code is called a critical zone.
+What one can do is lock that critical zone and allow only a thread at a time
+into that critical zone.

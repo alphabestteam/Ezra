@@ -1,0 +1,15 @@
+a.  Normally the code will run line by line, however, sometime
+we want to run some things at the same time. Threads are a way
+for us to run to part of the code at the same time.
+for example, if we have a server running and we'd like to run
+other things at the same time.
+
+
+b.  we'll use the threading library in order achieve threading.
+
+
+c.  the requests library is a library that's in charge of dealing
+with anything to do with sending/receiving/deleting things from the HTTP
+we'd use requests over sockets because sockets is mainly used for simple
+things that don't need a specific protocol (HTTP). but requests is much more
+flexible.

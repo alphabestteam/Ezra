@@ -1,0 +1,56 @@
+a.  A iterator is the object that iterates over a iterable object.
+so for example if I want to do a for loop and iterate over a list (which is iterable)
+the things that goes over each value is the iterator.
+
+    --- example for me to understand ---
+
+    my_list = [1, 2, 3, 4, 5]
+    my_iterator = iter(my_list)  # Convert the list to an iterator
+
+    print(next(my_iterator))  # Output: 1
+    print(next(my_iterator))  # Output: 2
+    print(next(my_iterator))  # Output: 3
+    # ...
+
+    # You can also use a for loop, which handles the iterator automatically:
+    for item in my_iterator:
+        print(item)
+
+
+b.  Lists, Strings, Tuples.
+
+    list:
+
+        random_list = [1, 2, 3, 4, 5]
+        my_iterator = iter(random_list)
+
+        for item in my_iterator:
+            print(item)
+
+
+    string:
+
+        random_string = "Wow this is hard"
+        my_iterator = iter(random_string)
+
+        for item in my_iterator:
+            print(item)
+
+
+    tuples:
+
+        random_tuple = (1, 3, 5)
+        my_iterator = iter(random_tuple)
+
+        for item in my_iterator:
+            print(item)
+
+
+c.  when you use the del statement inside an object it will delete
+the object or any reference to the object.
+
+
+d.  In order to make our object iterable you need to make sure that it
+can be iterated on it, meaning, it needs to be able to work with __iter__ and __next__
+__iter__ -> will define the objects that we're running on and will return the first value/object
+__next__ -> will return the next object in the list that __iter__ prepared for us.

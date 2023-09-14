@@ -1,0 +1,21 @@
+a.  a generator is a function that doesn't return a value rather it returns
+values using the yield method. the main difference between return and yield is that
+return returns a singular value at the end of the function where as yield can return
+a bunch of values in difference areas of the function.
+
+
+b.  3 reasons why we'd prefer to use generators.
+    1. it's great from memory saving
+    2. it's amazing if you want to return a bunch of values
+    3. it's good if you want to return values at different times through the code.
+
+
+c.  we'd want to save a generator in a variable in a case where we'd want to call the
+function a couple of times throughout the code. so for example,
+if i have a list and i'd like to print it out multiple times throughout the code but with
+changes in it.
+
+
+d.  as explained in 'a.' yield is a kind of return but it allows the function to run after it returns it's values
+it also allows to return multiple values, unlike return that only allows to return one value and only at the
+end of the function.

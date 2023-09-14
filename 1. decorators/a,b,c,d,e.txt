@@ -1,0 +1,42 @@
+a.  decorators are a pretty way to send a function through another function.
+so for example if I want to run func1, but I want to add something on that function,
+say some kind of checker, or some kind of add-on, i'd use a decorator.
+
+
+b.  in general, a decorator is a shortcut for running one function through another
+function. so instead of writing:
+
+    new_func = func2(func1)
+
+you can write:
+
+    @func2
+    def func1():
+        ...
+
+    new_func = func1()
+
+basically, the code will pass our function in the decorating function as a func.
+
+
+c.  In short, a function pointer is a variable that points to a function.
+In long :), everything in python is an object, and any object can point to any other objects.
+that means that if we want we can make it that a variable will point to a function (as both of them are objects)
+(NOTE, when we point to a function we write the function without brackets)
+
+for example:
+
+    def my_func()
+        ...
+
+    fun = my_func   # notice no brackets.
+
+
+d.  The reason we need to use *args and **kwargs when creating decorators,
+is because we need the wrapping function (decorator) to be flexible because we
+want it to be used with multiple types of functions, hence we give it the free rein.
+
+
+e.  A great example that we had for decorators is when we were building getters and setters.
+we used the @property decorator to get the attribute, and the @"attribute_name".setter decorator
+to set the attribute.

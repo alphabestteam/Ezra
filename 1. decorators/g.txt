@@ -1,0 +1,2 @@
+g.  a class decorator is the same thing as a regular decorator, just that it's
+for classes, so if you want to decorator a class with something you have a class decorator.

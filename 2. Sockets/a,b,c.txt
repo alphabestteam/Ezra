@@ -1,0 +1,18 @@
+a.  sockets is way to connect between 2 computers on the networks.
+we won't use sockets for connecting to a network area.
+the alternative for that would be Requests.
+
+
+b.  1.  the server creates a socket,
+    2.  it binds the address and the port
+    3.  opens a listen session
+    4.  the user creates a socket
+    5.  the user connects to a different socket that's listening on a certain address and port (server)
+    6.  the user "sendall" request to the server to send all the info that he has
+    7.  the server receives "Recv" the info from the user.
+    8.  (optional) the server can "sendall" back to the user.
+    9.  (optional based on 8) the user will "Recv".
+
+
+c.  1.  address Family - the socket Family that the socket is trying to contact. (Af_INET - IPv4, Af_INET - IPv6, AF_UNIX)
+    2.  the kind of connection - TCP/UDP (TCP (reliable and ordered) - SOCK_STREAM, UDP (less reliable but faster) - SOCK_DGRAM)

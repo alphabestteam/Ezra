@@ -1,0 +1,21 @@
+a.  a virtual environment is a way for us to run code in a
+safe space. it created a virtual space for us to run code.
+
+they're useful for us for example if we have some projects that
+need to be run in an older version, so we'd run them on the virtual environment where we'll
+install the needed version.
+another example why a virtual environment would be useful,
+if we want to play with version of a program but we're scared that it
+might change things on the computer, we'll do those playing withs in the virtual environment.
+
+
+b.  the way virtual environment work is that they create a copy of the computer and allow you to
+work on the virtual environment without changing things on the actual computer.
+
+
+c.  1. pip install venv
+    2. python -m venv venv
+    3. ./venv/Script/active
+
+
+d.  yes, because i've used venv before and it's all setup.

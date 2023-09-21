@@ -1,0 +1,31 @@
+1.  it's a kind of database that can handle large amounts of data 
+(it accepts any kind of data, also messy).
+the model is a flexible model allowing it to scale. 
+It stores the data in a JSON format (dictionaries).
+no-sql will be used for more complex tables and data, unlike sql that 
+needs everything to be consistent and ordered.
+
+
+2.  pro:
+    a.  it has flexible scalability - it can scale to any unique size you need it to be.
+    b.  it has flexible data types - you can put in any kind of data to noSQL, allowing the tables
+        adapt with the new data types.
+    c.  large amounts of data storage - noSQL can store allot of data, making it idle for big data applications.
+
+    cons:
+    a.  queries are less flexible - because noSQL has many data structures your queries will be less,
+        for example you can't guarantee uniqueness for keys.
+    b.  less mature - noSQL community isn't as big as SQL making it harder to work with.
+    c.  cost - it takes more time to retrieve data.
+
+
+3.  database - is the equivalent to database in SQL, it's made up of multiple collections
+    collections - is the equivalent to tables in SQL, it's schema-less, contains documents and is indexable. 
+    documents - equivalent of rows, is stored in a collection, it can have _id key, and it is stored in binary form of JSON. 
+    fields - equivalent of fields, it's created using key-value pairs (dictionary).
+
+
+4.  we need unique id for each document in a case that you have multiple documents with the same name and you would like to access
+    one of them. and if we don't declare a specific id for the document the code will create one for it.
+
+    

@@ -89,6 +89,9 @@ a.courses {
 .smiling {
     padding: 30px 20px 10px;
     max-width: 1152px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .smiling_image {
@@ -96,5 +99,23 @@ a.courses {
 }
 
 .smiling_text {
-    display: inline-block;
+    padding-left: 30px;
+}
+
+.smiling_big_text {
+    white-space: pre-line;
+    font-family: 'Source Serif 4', serif;
+}
+
+.underline {
+    border-bottom: 2px solid rgb(21, 136, 59);
+}
+
+.smiling_small_text {
+    white-space: pre-line;
+}
+
+.smiling_big_text .smiling_small_text {
+    text-align: left;
+
 }

@@ -1,7 +1,7 @@
 * {
     font-family: 'Lato', 'Noto Sans', Helvetica;
-    border: 1px solid;
-    border-color: red;
+    /* border: 1px solid;
+    border-color: red; */
 }
 
 .navigation_bar {
@@ -31,10 +31,6 @@
     padding: 0px 20px 0px 0px;
 }
 
-.khanacademy_logo {
-    width: 175;
-}
-
 a.sign_up,
 a.log_in,
 a.donate,
@@ -45,13 +41,11 @@ a.get_ai_guide {
     display: flex;
     flex-direction: row;
     justify-content: center;
-
 }
 
-img.khan_logo {
-    width: 155px;
-    height: 60px;
-    padding: 0px 80px;
+.khanacademy {
+    align-self: center;
+    margin: 0px 80px;
 }
 
 div.search_bar_mother {
@@ -61,7 +55,7 @@ div.search_bar_mother {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    width: 200px;   
+    width: 200px;
     height: 40px;
     align-self: center;
     border-radius: 10%;
@@ -74,8 +68,9 @@ a.search {
     height: 20px;
     padding-left: 10px;
     background-color: rgb(247, 248, 250);
-    
+
 }
+
 a.magnifine_glass {
     color: grey;
     background-color: rgb(247, 248, 250);
@@ -96,7 +91,7 @@ a.courses {
     max-width: 1152px;
 }
 
-.smiling_image{
+.smiling_image {
     max-width: 451px;
 }
 

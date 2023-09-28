@@ -1,8 +1,9 @@
 * {
     font-family: 'Lato', 'Noto Sans', Helvetica;
-    /* border: 1px solid;
-    border-color: red; */
-} 
+
+    border: 1px solid;
+    border-color: red;
+}
 
 .navigation_bar {
     display: flex;
@@ -122,4 +123,55 @@ a.courses {
     line-height: 1.6;
     color: grey;
 
+}
+
+.grey_area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(247, 248, 250);
+    max-width: 1160px;
+    align-self: center;
+    margin: 0px 20px;
+    padding: 20px 80px;
+    border-radius: 10%;
+}
+
+.why_k_works {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0px 80px;
+
+}
+
+.why_k_big_text {
+    font-family: 'Source Serif 4', serif;
+    font-weight: bold;
+    font-size: 44px;
+}
+
+.why_k_table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1152px;
+
+}
+
+
+.img-container, .h3-container {
+    display: flex;
+    justify-content: center;
+
+}
+h3 {
+    font-family: 'Source Serif 4', serif;
+}
+.row_1, img {
+    width: 106px;
+}
+
+.p-container {
+    text-align: center;
 }

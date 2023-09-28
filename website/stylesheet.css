@@ -2,7 +2,7 @@
     font-family: 'Lato', 'Noto Sans', Helvetica;
     /* border: 1px solid;
     border-color: red; */
-}
+} 
 
 .navigation_bar {
     display: flex;
@@ -105,17 +105,26 @@ a.courses {
 .smiling_big_text {
     white-space: pre-line;
     font-family: 'Source Serif 4', serif;
+    text-align: left;
+    margin-bottom: 0px;
+    font-weight: bolder;
 }
 
 .underline {
-    border-bottom: 2px solid rgb(21, 136, 59);
+    border-bottom: 2px solid rgb(46, 199, 97);
+    font-family: 'Source Serif 4', serif;
+
 }
 
-.smiling_small_text {
+.smiling_text .smiling_small_text {
+    margin: 20px 0px;
     white-space: pre-line;
+    line-height: 1.6;
+    color: grey;
+
 }
 
-.smiling_big_text .smiling_small_text {
+/* .smiling_big_text .smiling_small_text {
     text-align: left;
 
-}
+} */

@@ -1,0 +1,48 @@
+{
+    "name": "ezra behr",
+    "age": 23,
+    "cars": [
+        {
+            "price": 2000,
+            "year_of_release": 2022,
+            "horse_power": "3hp",
+            "max_speed": "213mph",
+            "no._of_cylinders": 4
+        },
+        {
+            "price": 4300,
+            "year_of_release": 2005,
+            "horse_power": "6hp",
+            "max_speed": "93mph",
+            "no._of_cylinders": 1
+        },
+        {
+            "price": 23000,
+            "year_of_release": 1998,
+            "horse_power": "2hp",
+            "max_speed": "130mph",
+            "no._of_cylinders": 4
+        },
+        {
+            "price": 10000,
+            "year_of_release": 2012,
+            "horse_power": "8hp",
+            "max_speed": "263mph",
+            "no._of_cylinders": 8
+        }
+    ],
+    "cities": [
+        {
+            "name": "new york",
+            "time_zone": "GMT+2",
+            "zip_code": "3948832",
+            "population": 12000,
+            "year_established": 1867,
+            "mayor_of_city": {
+                "age": 56,
+                "year_elected": 1967,
+                "yearly_salary": 150000
+            }
+        }
+    ]
+}

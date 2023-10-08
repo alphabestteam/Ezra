@@ -41,3 +41,14 @@
 
 21. json.parse() -> to convert the data to a json file.
     json.loads() -> to convert the data from json to python.
+
+22. xml is similar to JSON with a few changes, for one the syntax is way longer.
+    making it much harder to use and write up, for another the XML has to be 
+    pared using a XML parser, while JSON can be parsed with a JavaScript function.
+
+23. json doesn't use end tags, it's shorter, faster to read and write and it can use arrays.
+
+24. a.  for AJAX apps json is faster.
+    b.  when I want to store a lot of data, it's much easier to write it up in a JSON format.
+    c.  in general all the time, just because it's much better than XML.
+ 

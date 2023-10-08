@@ -51,4 +51,12 @@
 24. a.  for AJAX apps json is faster.
     b.  when I want to store a lot of data, it's much easier to write it up in a JSON format.
     c.  in general all the time, just because it's much better than XML.
- 
+
+26. you first need to parse the file then you can access the first codename:
+        papuchasJason.codenames[0];
+
+        
+Jason Todd, a character from DC Comics,
+is known by various codenames throughout his fictional history. 
+Besides "Robin" and "Nightwing," he has also gone by the codename "Red Hood."
+So, Jason Todd's other codename is "Red Hood."  ~chatGPT 😁

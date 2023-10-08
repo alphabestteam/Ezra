@@ -1,0 +1,62 @@
+1.  It's a format in which data is stored.
+
+2.  A Json object is a piece of data, it's stored in a dictionary style,
+        {"first name" : "ezra" , "age" : 22}
+
+3.  JSON dictionary, JSON hash, JSON map.
+
+4.  array, list, tuple, sequence..
+
+5.  string, number, JSON object, array, boolean, null.
+
+6.  string, number, JSON object, array, boolean, null.
+
+7.  numbers and null.
+
+8.  The minimum size for a string in JSON would be 0 -> ""
+
+9.  keys are used in the key-value pair, and they are used for identifying the values.
+
+10. incorrect, they are supported.
+
+11. yes. -> {"list_of_names" : ["moshe","ari","david"]}
+
+12. yes.
+
+13. yes.
+
+14. it's the way to write up the info (dictionary style).
+
+15. JavaScript Object Notation
+
+16. .json
+
+17. values in arrays, dictionaries using a comma, and between dictionaries i used curly braces.
+
+18. []
+
+19. {}
+
+20. yes.
+
+21. json.parse() -> to convert the data to a json file.
+    json.loads() -> to convert the data from json to python.
+
+22. xml is similar to JSON with a few changes, for one the syntax is way longer.
+    making it much harder to use and write up, for another the XML has to be 
+    pared using a XML parser, while JSON can be parsed with a JavaScript function.
+
+23. json doesn't use end tags, it's shorter, faster to read and write and it can use arrays.
+
+24. a.  for AJAX apps json is faster.
+    b.  when I want to store a lot of data, it's much easier to write it up in a JSON format.
+    c.  in general all the time, just because it's much better than XML.
+
+26. you first need to parse the file then you can access the first codename:
+        papuchasJason.codenames[0];
+
+        
+Jason Todd, a character from DC Comics,
+is known by various codenames throughout his fictional history. 
+Besides "Robin" and "Nightwing," he has also gone by the codename "Red Hood."
+So, Jason Todd's other codename is "Red Hood."  ~chatGPT 😁

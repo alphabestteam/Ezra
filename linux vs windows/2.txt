@@ -1,0 +1,24 @@
+1. what's the difference between linux and windows file wise?
+A:  while windows saves the files in drivers like C: D: E: , linux saves them in a tree like way.
+
+2. what kind of files do you have in linux?
+A:  General files - regular files like txt, mp3, videos..
+    Directory files - folders
+    Device Files - devices like printers CD-ROM, hard drives,...
+
+
+3. what is a root user in linux?
+A:  a root user is the equivalent to a admin user in windows.
+    he has access to all files in the computer regardless the user and he can change system files. 
+
+4. can you have 4 files that have the same name in windows/linux?
+A:  in windows you can't.
+    in linux so long as there purpose is different then you can.
+
+5. where is the home file for the user named "ohad" kept in windows/linux?
+A:  in linux is kept under /home/ohad, while in windows it will be
+    kept in C:\User\ohad\ (my Documents).
+
+6. where are temporary files kept in linux/windows?
+A:  in linux they will be kept in the "tmp" folder.
+    in windows it will be kept in C:\Users\AppData\Local\Temp.

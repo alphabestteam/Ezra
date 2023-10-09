@@ -1,0 +1,33 @@
+1. what is an OS?
+A:  an OS (short for operating system) is a program that takes care 
+    of the fundamental things like letting hardware communicate with 
+    the software, know what kind of file you're running (mp4, mp3,...).
+    In general it's the complete package that allows you to interact with
+    the computer.
+
+2. what is a kernel?
+A:  a kernel is part of the OS, it's in charge of dealing with the interactions
+    between the apps and the computers CUP memory and devices.
+
+3. what's special in linux?
+A: it can be customized by anyone to any need.
+
+4. pros for linux?
+A:  - linux is a free operating system.
+    - it's open source meaning that anyone with programming skills can modify it to his liking.
+    - it's super secure so no need for antivirus's.
+    - it's stable and reliable therefor deeming it unnecessary to reboot the system.
+
+5. difference between unix and linux?
+A: unix - designed mainly for mainframes and is in enterprises and unis, it costs money.
+   linux - used for household computer users, developers and server environments, it's free.
+
+6. what's linux distribution?
+A:  linux distribution is and kind of child version of the original linux, so if anyone came out
+    with a new and updated version of linux (kali, ubuntu, gentoo,... ) it's called a linux distribution.
+
+7. name a bunch of distributions?
+A:  Arch - used mainly for developing.
+    kali - built for networks/hacking.
+    ubuntu - for a user friendly interaction.
+    centOS - used for enterprises and web servers.

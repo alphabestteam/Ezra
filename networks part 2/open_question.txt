@@ -1,0 +1,13 @@
+Q:  what is vlan? what issues does it solve?
+A:  vlan is a way to group ports in the same switch.
+    it solves the issue if you want to have one switch but have 
+    groups under the same port.
+
+Q:  what the difference between access prot and trunk port?
+A:  access port is the general port that every port is connected to 
+    while trunk port is a port that can use all ports and switches regardless of the vlan (sort of like an admin port)
+    this allows the user to send info to other devices in one go from different vlans.
+
+Q:  when will we add the header of the vlan tag packet?
+A:  vlan tag is added to the header when the package is sent to the trunk port.
+

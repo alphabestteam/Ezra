@@ -1,0 +1,12 @@
+Q:  what is a switch? and what issues does it fix?
+A:  A switch is a device that works on the 2nd level and it's job is 
+    to handle packages that come in and decide which package goes to what computer.
+    the issue that it helps fixing is issues of package collisions and sending the right
+    package to the right computer. 
+
+    Q:  how does a switch know to which physical interface it should send each package?
+    A:  on every package there's a receiving mac address then the sending mac address, 
+        so the switch sees the receiving mac address and checks if he has that mac address
+        in his books (asks around) and based on that he will send it out.
+    
+    

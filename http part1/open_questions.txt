@@ -1,0 +1,45 @@
+1.  the IETF is a group that there job is to create internet standards and protocols.
+
+2.  the communication protocol is a set of rules and conventions that decide how 
+    data is exchanged between devices or systems in a network.
+
+3.  RFC is a type of document that is used to publish technical and organizational notes about
+    internet standards, protocols, procedures and related issues.
+
+4.  HTTP is used for sending info over the internet and connect between different internet users (web servers, web clients..)
+
+5.  https is a secured version of http, so for example both http and https used TCP as their transport layer protocol, however,
+    https adds another layer of security by using TLS/SSL to encrypt the data.
+    and in general when you search on the internet http will look like this: HTTP//www... where as https will be like this: HTTPS//www...
+
+6.  the general model of the http protocol is a client server protocol where the client (web browser) sends a request to the server (web server), 
+    and then the server will respond with the requested info.
+
+7.  user header - a software that identifies the software and version that's used by the client to make the http request.
+    web server - is a app of device that hosts websites and stuff for the client, and is always listening for an incoming http request and will respond to them.
+    proxies - are servers that are located between the client and the server, and it will mediate between the 2. 
+
+8.  proxies are used as a intermediaries between clients and servers, they're used for load balance, caching, security and anonymity.
+
+9.  a protocol with a state is a protocol that saves information about the ongoing communication between clients and servers. stateful protocol remembers the history while stateless doesn't.
+
+10. by default http doesn't have a state, however if you want to make it stateful you need to use cookies or sessions.
+
+11. a. the client sends a https request to the server.
+    b. the server reads the request and a http respond back to the client.
+    c. the client receives and processes the response. 
+    d. the connection will be closed (or kept open for further requests).
+
+12. request headers are components of the http request and it gives more info to the server,
+    such as the clients user agent, accepts content types, cookies...
+
+13. cookies are info that the server sends to the client that the client will include in his http request next time he sends a request to that server.
+
+14. the request line, the headers and the message body.
+
+15. a status line, a series of http headers or header files, a message body.
+
+16. http3 is designed to improve the performance and security of the web communication. 
+    it's different from http2 because http3 uses QUIC as a transport layer while http2 uses TCP.
+    another difference is that http3 has a much faster handshake.
+    

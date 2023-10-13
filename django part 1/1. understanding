@@ -1,0 +1,60 @@
+1.  it's where you will create the ruleset of the db (how the db will look like)
+    it's in charge on how the db will look like (rules, set-up)
+
+2.  the views.py is where you will put all the logic and the functions. it's in charge of all the requests.
+
+3.  urls.py is the place that will tell the computer where to go when a certain word is put into the search bar.
+    it's in charge of the stream of info, and to direct where each info is stored.
+
+4.  migrations is what connects the model file and the db. general communication between the code and the db.
+    to create a new migration you will type "python manage.py makemigrations" and then "python manage.py migrate" to migrate the new rullset.
+
+5.  the serializer is in charge of converting complex data types (django models) into python data types (dictionaries).
+
+6.  djangorest (DRF) is a toolkit for building web apis in django (restful apis).
+
+7.  regular serializers are used when you want to have more control, flexibility and customization over the serialization and validation of the data.
+    it's good for when you want to work with data that is not directly tied to teh django model.
+
+    modelserializer is used when you want to do a simple copy/read/update/delete to a django model instance.
+
+    in summary i'll use regular serializers when i want to work with non django data, and modelserializer when it's django'y.
+
+8.  one-to-one, many-to-one, many-to-many.
+    one-to-one: one record of a particular model is related to exactly one record of another model. it's used for security purposes.
+    many-to-one: one record from the first model is related to many records from the second model. but one record from the second model is related to only one record from the first model. (album/song) 
+    many-to-many: each record from the first model is related to many records from the second model and vis versa. (product/customer)
+
+9.  1. start a new project: "django-admin startproject <project-name>"
+    2. activate the server: "python manage.py runserver [port-number]"
+    3. create new app: "python manage.py startapp <app-name>
+    4. insert the new apps name in the INSTALLED_APPS list in the "settings.py" file.
+
+10. 1. the client sends a post request.
+    2. the client side code (javascript) makes a HTTP POST request. 
+    3. the HTTP POST request is send to the server.
+    4. the server gets the post request and inspects the url then it routes the request to the appropriate handler.
+    5. the server parses the request to extract info.
+    6. the sever might request a validation/authentication that the info is good.
+    7. the post request is processed by its handler. (interacting with the db..)
+    8. after the request is processed the http generates a response (status code [200/400], response)
+    9. the response is send back to the client.
+
+11. middleware are reusable pieces of code that help with your program. (authentication, security checks, request modification...)
+
+12. fixtures are a way to load data into databases from external sources (normally in JSON/XML/YAML formats). 
+    it allows you to put into your db predefined data.
+
+    we would use fixtures for a couple of reasons:
+        1. if we want to provide the app with initial data.
+        2. if you make changes to your db you can use fixtures to move the info.
+
+    to load fixtures: "python manage.py loaddata data.json
+    to create fixtures: "python manage.py dumpdata app_name.ModelName --output=data.json"
+
+13. all() - will return a pointer to the location of all the data (use .values() to return the actual data)
+
+14. mangers are in charge of interacting with the db (querying, creating, updating, deleting...)
+    there are 2 types of managers:
+    default manager (object): where you have all the base queries
+    custom manager: where you can define you own type of actions.

@@ -1,0 +1,7 @@
+1. A json file is a file that stores info in a dictionary style and can be used as an independent file for 
+info that can be used in different languages. 
+
+2.  we will use the "import json" module to use json.
+the main functions in json are: 
+- json.load(x) -> converting a json dictionary to a python dictionary
+- json.dumps(x) -> converting a python dictionary to a json dictionary

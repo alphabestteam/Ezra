@@ -18,14 +18,15 @@ def get_random_number(request):
 
 
 def get_user_random(request, number):
-    if not isinstance(number, int):
-        raise Http404("please enter in an int", status=404)
+    try:
+        number = int(number)
+    except:
+        return HttpResponse("Please enter an integer", status=400)
 
     random_number = random.uniform(0, number)
     response = HttpResponse(
         content=str(random_number), status=200, content_type="text/plain"
     )
-
     return response
 
 

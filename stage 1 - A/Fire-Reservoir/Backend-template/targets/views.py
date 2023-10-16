@@ -13,7 +13,7 @@ def add_target(request):
     # do parser.
     # call serializer
     # save
-    # resposne to front
+    # response to front
     if request.method == "POST":
         object_data = JSONParser().parse(request)
         data_deserialized = TargetSerializer(data=object_data)
@@ -34,4 +34,7 @@ def update_target(request):
 
 def all_targets(request):
     # Implement here a get all targets function
-    pass
+    if request.method == "GET":
+        targets = Target.objects.all()
+        targets_serialized = TargetSerializer(targets, many = True)
+        return JsonResponse(targets_serialized.data, safe=False)

@@ -10,6 +10,6 @@ class Target(models.Model):
     enemy_organization = models.CharField(max_length=100)
     target_goal = models.CharField(max_length=100)
     was_target_destroyed = models.BooleanField(null=True)
-    target_id = models.IntegerField()
+    target_id = models.IntegerField(unique=True)
 
     

@@ -12,7 +12,7 @@ class TargetSerializer(serializers.ModelSerializer):
     # def create(self, validated_data):
     #     return super(TargetSerializer, self).create(validated_data)
     
-
-    def update(self, instance, validated_data):
-        # Implement here an update function
-        return instance
+    # not necessary.
+    # def update(self, instance, validated_data):
+    #     # Implement here an update function
+    #     return instance

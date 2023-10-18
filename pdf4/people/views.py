@@ -166,3 +166,22 @@ def get_rich_kids(request):
         return JsonResponse(list_rich_kids, status=status.HTTP_200_OK, safe=False)
     else:
         return HttpResponse('not good', status=status.HTTP_405_METHOD_NOT_ALLOWED)
+
+@csrf_exempt
+def get_parents(request, kid_tz):
+    if request.method == 'GET':
+        list_of_parents = []
+
+        parents = Parent.objects.all()
+        parents_ser = ParentSerializer(parents, many=True).data
+        for parent in parents_ser:
+            print(parent)
+            for kid in parent["kids"]:
+                if kid == kid_tz:
+                    list_of_parents.append(parent)
+
+
+        return JsonResponse(list_of_parents, status=status.HTTP_200_OK, safe=False)
+    else:
+        return HttpResponse("not good",status=status.HTTP_405_METHOD_NOT_ALLOWED)
+    

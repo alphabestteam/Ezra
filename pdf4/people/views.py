@@ -12,9 +12,10 @@ from django.core.exceptions import ObjectDoesNotExist
 @csrf_exempt
 def get_all_people(request):
     if request.method == "GET":
-        people_list = Person.objects.all()
-        people_list_ser = PersonSerializer(people_list, many=True).data
-        return JsonResponse(people_list_ser, status=status.HTTP_200_OK, safe=False)
+        people_list = list(Person.objects.all().values())
+        return JsonResponse(people_list, status=status.HTTP_200_OK, safe=False)
+    else:
+        return HttpResponse('not good', status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
 
 @csrf_exempt
@@ -52,7 +53,7 @@ def update_person(request):
         person_ser = PersonSerializer(person, data=data)
 
         if person_ser.is_valid():
-            person_ser.save()
+            person_ser.update(person, data)
             return HttpResponse("updated!", status=status.HTTP_200_OK)
         else:
             return HttpResponse("not updated", status=status.HTTP_400_BAD_REQUEST)
@@ -104,7 +105,7 @@ def update_parent(request):
         parent_ser = ParentSerializer(parent, data=data)
 
         if parent_ser.is_valid():
-            parent_ser.save()
+            parent_ser.update(parent, data)
             return HttpResponse("updated!", status=status.HTTP_200_OK)
         else:
             return HttpResponse("not updated", status=status.HTTP_400_BAD_REQUEST)

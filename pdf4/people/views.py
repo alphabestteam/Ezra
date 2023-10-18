@@ -11,9 +11,11 @@ from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
 @csrf_exempt
 def get_all_people(request):
-    people_list = list(Person.objects.all().values())
-    return JsonResponse(people_list, status=status.HTTP_200_OK, safe=False)
-
+    if request.method == "GET":
+        people_list = list(Person.objects.all().values())
+        return JsonResponse(people_list, status=status.HTTP_200_OK, safe=False)
+    else:
+        return HttpResponse('not good', status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
 @csrf_exempt
 def add_person(request):

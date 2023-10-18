@@ -10,4 +10,6 @@ urlpatterns = [
     path('addParent/', views.add_parent),
     path('removeParent/<int:tz>/', views.remove_parent),
     path('updateParent/', views.update_parent),
+    path('associateKid<int:k_tz>2Parent<int:p_tz>/', views.associate_kid_to_parent),
+    path('getInfoOfParent<int:p_tz>/', views.get_info_of_parent),
 ]

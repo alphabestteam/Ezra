@@ -106,3 +106,32 @@ def update_parent(request):
             return HttpResponse("updated!", status=status.HTTP_200_OK)
         else:
             return HttpResponse("not updated", status=status.HTTP_400_BAD_REQUEST)
+
+@csrf_exempt
+def associate_kid_to_parent(request, k_tz, p_tz):
+    try:
+        kid = Person.objects.get(tz=k_tz)
+        parent = Parent.objects.get(tz=p_tz)
+    except ObjectDoesNotExist:
+        return HttpResponse('please enter a valid tz for kid and parent', status=status.HTTP_404_NOT_FOUND)
+    parent.kids.add(kid)
+    return HttpResponse("associated", status=status.HTTP_200_OK)
+
+@csrf_exempt
+def get_info_of_parent(request, p_tz):
+    if request.method == 'GET':
+        try:
+            parent = Parent.objects.get(tz=p_tz)
+            print(type(parent))
+            parent_ser = ParentSerializer(parent)
+        except ObjectDoesNotExist:
+            return HttpResponse('please enter a valid tz for parent', status=status.HTTP_404_NOT_FOUND)
+
+        list_of_kids = [parent_ser.data]
+        for x in parent_ser.data["kids"]:
+            kid = Person.objects.get(tz=x)
+            kid_ser = PersonSerializer(kid)
+            list_of_kids.append(kid_ser.data)
+        return JsonResponse(list_of_kids, status=status.HTTP_200_OK, safe=False)
+    else:
+        return HttpResponse('bad request', status=status.HTTP_405_METHOD_NOT_ALLOWED)

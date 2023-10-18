@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from people.models import Person,Parent
@@ -112,13 +113,16 @@ def update_parent(request):
 
 @csrf_exempt
 def associate_kid_to_parent(request, k_tz, p_tz):
-    try:
-        kid = Person.objects.get(tz=k_tz)
-        parent = Parent.objects.get(tz=p_tz)
-    except ObjectDoesNotExist:
-        return HttpResponse('please enter a valid tz for kid and parent', status=status.HTTP_404_NOT_FOUND)
-    parent.kids.add(kid)
-    return HttpResponse("associated", status=status.HTTP_200_OK)
+    if request.method == "PUT":
+        try:
+            kid = Person.objects.get(tz=k_tz)
+            parent = Parent.objects.get(tz=p_tz)
+        except ObjectDoesNotExist:
+            return HttpResponse('please enter a valid tz for kid and parent', status=status.HTTP_404_NOT_FOUND)
+        parent.kids.add(kid)
+        return HttpResponse("associated", status=status.HTTP_200_OK)
+    else:
+        return HttpResponse('not good', status=status.HTTP_404_NOT_FOUND)
 
 @csrf_exempt
 def get_info_of_parent(request, p_tz):
@@ -138,3 +142,27 @@ def get_info_of_parent(request, p_tz):
         return JsonResponse(list_of_kids, status=status.HTTP_200_OK, safe=False)
     else:
         return HttpResponse('bad request', status=status.HTTP_405_METHOD_NOT_ALLOWED)
+
+def kid_age(kid_ser):
+    date = kid_ser["date_of_birth"]
+    date_obj = datetime.strptime(date, r"%Y-%m-%d")
+    return 2023 - date_obj.year
+
+
+@csrf_exempt
+def get_rich_kids(request):
+    if request.method == 'GET':
+        list_rich_kids = []
+
+        # getting all parents that earn more than 50000.00 a month.
+        parents_list = list(Parent.objects.filter(salary__gte=50000.00))
+        parents_data = ParentSerializer(parents_list, many=True).data
+        for parent in parents_data:
+            for x in parent["kids"]:
+                kid = Person.objects.get(tz=x)
+                kid_ser = PersonSerializer(kid)
+                if kid_age(kid_ser.data) < 18:
+                    list_rich_kids.append(kid_ser.data)
+        return JsonResponse(list_rich_kids, status=status.HTTP_200_OK, safe=False)
+    else:
+        return HttpResponse('not good', status=status.HTTP_405_METHOD_NOT_ALLOWED)

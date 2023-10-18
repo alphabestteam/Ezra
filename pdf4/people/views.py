@@ -52,7 +52,7 @@ def update_person(request):
         person_ser = PersonSerializer(person, data=data)
 
         if person_ser.is_valid():
-            person_ser.save()
+            person_ser.update(person, data)
             return HttpResponse("updated!", status=status.HTTP_200_OK)
         else:
             return HttpResponse("not updated", status=status.HTTP_400_BAD_REQUEST)

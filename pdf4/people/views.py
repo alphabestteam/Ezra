@@ -185,6 +185,21 @@ def get_parents(request, kid_tz):
     else:
         return HttpResponse("not good",status=status.HTTP_405_METHOD_NOT_ALLOWED)
     
-    # the other way is to create a function in person getperants() and there it would get the parents
+    # the other way is to create a function in person get_parents() and there it would get the parents
     # using the instance.
 
+@csrf_exempt
+def get_kids(request, parent_tz):
+    if request.method == 'GET':
+        list = []
+        parent = Parent.objects.get(tz=parent_tz)
+        parent_ser = ParentSerializer(parent).data
+
+        for kid in parent_ser['kids']:
+            kid = Person.objects.get(tz=kid)
+            kid_ser = PersonSerializer(kid).data
+            list.append(kid_ser)
+        
+        return JsonResponse(list, status=status.HTTP_200_OK, safe=False)
+    else:
+        return HttpResponse('not good',status=status.HTTP_405_METHOD_NOT_ALLOWED)

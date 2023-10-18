@@ -14,4 +14,5 @@ urlpatterns = [
     path('getInfoOfParent/<int:p_tz>/', views.get_info_of_parent),
     path('getRichKids/', views.get_rich_kids),
     path('getParents/<int:kid_tz>', views.get_parents),
+    path('getKids/<int:parent_tz>', views.get_kids),
 ]

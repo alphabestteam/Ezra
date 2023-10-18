@@ -12,8 +12,9 @@ from django.core.exceptions import ObjectDoesNotExist
 @csrf_exempt
 def get_all_people(request):
     if request.method == "GET":
-        people_list = list(Person.objects.all().values())
-        return JsonResponse(people_list, status=status.HTTP_200_OK, safe=False)
+        people_list = Person.objects.all()
+        people_list_ser = PersonSerializer(people_list, many=True).data
+        return JsonResponse(people_list_ser, status=status.HTTP_200_OK, safe=False)
 
 
 @csrf_exempt
@@ -64,8 +65,9 @@ part 5
 @csrf_exempt
 def get_all_parents(request):
     if request.method == "GET":
-        parents_list = list(Parent.objects.all().values())
-        return JsonResponse(parents_list, status=status.HTTP_200_OK, safe=False)
+        parents_list = Parent.objects.all()
+        parents_data = ParentSerializer(parents_list, many=True).data
+        return JsonResponse(parents_data, status=status.HTTP_200_OK, safe=False)
 
 @csrf_exempt
 def add_parent(request):
@@ -122,12 +124,12 @@ def get_info_of_parent(request, p_tz):
     if request.method == 'GET':
         try:
             parent = Parent.objects.get(tz=p_tz)
-            print(type(parent))
             parent_ser = ParentSerializer(parent)
         except ObjectDoesNotExist:
             return HttpResponse('please enter a valid tz for parent', status=status.HTTP_404_NOT_FOUND)
 
         list_of_kids = [parent_ser.data]
+        
         for x in parent_ser.data["kids"]:
             kid = Person.objects.get(tz=x)
             kid_ser = PersonSerializer(kid)

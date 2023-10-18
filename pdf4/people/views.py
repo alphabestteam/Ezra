@@ -175,7 +175,6 @@ def get_parents(request, kid_tz):
         parents = Parent.objects.all()
         parents_ser = ParentSerializer(parents, many=True).data
         for parent in parents_ser:
-            print(parent)
             for kid in parent["kids"]:
                 if kid == kid_tz:
                     list_of_parents.append(parent)
@@ -192,7 +191,11 @@ def get_parents(request, kid_tz):
 def get_kids(request, parent_tz):
     if request.method == 'GET':
         list = []
-        parent = Parent.objects.get(tz=parent_tz)
+        try:
+            parent = Parent.objects.get(tz=parent_tz)
+        except ObjectDoesNotExist:
+            return HttpResponse("doesn't exist", status=status.HTTP_404_NOT_FOUND)
+        
         parent_ser = ParentSerializer(parent).data
 
         for kid in parent_ser['kids']:
@@ -201,5 +204,23 @@ def get_kids(request, parent_tz):
             list.append(kid_ser)
         
         return JsonResponse(list, status=status.HTTP_200_OK, safe=False)
+    else:
+        return HttpResponse('not good',status=status.HTTP_405_METHOD_NOT_ALLOWED)
+    
+@csrf_exempt
+def get_grandparents(request, grandchild_tz):
+    if request.method == 'GET':
+        grandparents = []
+        try:
+            person = Person.objects.get(tz=grandchild_tz)
+        except ObjectDoesNotExist:
+            return HttpResponse("doesn't exist", status=status.HTTP_400_BAD_REQUEST)
+        
+        for parent in person.parents.all():
+            for grandparent in parent.parents.all():
+                grandparents.append(grandparent)
+
+        grandparents_ser = ParentSerializer(grandparents, many=True).data
+        return JsonResponse(grandparents_ser, status=status.HTTP_200_OK, safe=False)
     else:
         return HttpResponse('not good',status=status.HTTP_405_METHOD_NOT_ALLOWED)

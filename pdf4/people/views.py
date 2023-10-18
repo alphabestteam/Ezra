@@ -185,3 +185,6 @@ def get_parents(request, kid_tz):
     else:
         return HttpResponse("not good",status=status.HTTP_405_METHOD_NOT_ALLOWED)
     
+    # the other way is to create a function in person getperants() and there it would get the parents
+    # using the instance.
+

@@ -11,7 +11,7 @@ class PersonSerializer(serializers.ModelSerializer):
         instance.city = validated_data.get("city", instance.city)
         instance.save()
         return instance
-
+    
 class ParentSerializer(PersonSerializer):
     class Meta:
         model = Parent

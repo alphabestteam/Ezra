@@ -224,3 +224,23 @@ def get_grandparents(request, grandchild_tz):
         return JsonResponse(grandparents_ser, status=status.HTTP_200_OK, safe=False)
     else:
         return HttpResponse('not good',status=status.HTTP_405_METHOD_NOT_ALLOWED)
+    
+
+@csrf_exempt
+def get_brothers(request, kid_tz):
+    if request.method == 'GET':
+        siblings = []
+        try:
+            person = Person.objects.get(tz=kid_tz)
+        except ObjectDoesNotExist:
+            return HttpResponse("doesn't exist", status=status.HTTP_400_BAD_REQUEST)
+        for parent in person.parents.all():
+            for brother in parent.kids.all():
+                if brother != person:
+                    if brother not in siblings:
+                        siblings.append(brother)
+        siblings_ser = PersonSerializer(siblings, many=True).data
+
+        return JsonResponse(siblings_ser, status=status.HTTP_200_OK, safe=False)
+    else:
+        return HttpResponse('not good',status=status.HTTP_405_METHOD_NOT_ALLOWED)

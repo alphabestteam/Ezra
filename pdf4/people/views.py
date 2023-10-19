@@ -244,3 +244,26 @@ def get_brothers(request, kid_tz):
         return JsonResponse(siblings_ser, status=status.HTTP_200_OK, safe=False)
     else:
         return HttpResponse('not good',status=status.HTTP_405_METHOD_NOT_ALLOWED)
+    
+
+'''
+##################################################
+part 6
+##################################################
+'''
+
+'''
+1. Person.objects.all().values()
+
+2. len(Parent.objects.filter(work_place="Google").values())
+
+3. Parent.objects.all().order_by('kids__date_of_birth').values()
+
+4. Parent.objects.filter(name__contains="i").values() 
+
+5. Parent.objects.filter(Q(city="Raanana")| Q(city="Tel Aviv")).values()
+
+6. Parent.objects.aggregate(Avg('salary')).values()  
+
+7. 
+'''

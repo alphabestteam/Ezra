@@ -29,3 +29,12 @@ class Migration(migrations.Migration):
     
 
 
+'''
+open questions:
+
+1.  I used a PositiveIntegerField() because the salary needs to be a int and a salary can't be negative.
+2.  first we need to makemigrations so that we can edit the migration to deal with the decimal values.
+    next we go into the new migration that was created and create a function that will go over every 
+    parent salary and round up the number (and turn it into a int).
+    once we do that we will run migrate. 
+'''

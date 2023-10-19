@@ -253,17 +253,23 @@ part 6
 '''
 
 '''
-1. Person.objects.all().values()
+1.  Person.objects.all().values()
 
-2. len(Parent.objects.filter(work_place="Google").values())
+2.  len(Parent.objects.filter(work_place="Google").values())
 
-3. Parent.objects.all().order_by('kids__date_of_birth').values()
+3.  Parent.objects.all().order_by('kids__date_of_birth').values()
 
-4. Parent.objects.filter(name__contains="i").values() 
+4.  Parent.objects.filter(name__contains="i").values() 
 
-5. Parent.objects.filter(Q(city="Raanana")| Q(city="Tel Aviv")).values()
+5.  Parent.objects.filter(Q(city="Raanana")| Q(city="Tel Aviv")).values()
 
-6. Parent.objects.aggregate(Avg('salary')).values()  
+6.  Parent.objects.aggregate(Avg('salary')).values()  
 
-7. 
+7.  Parent.objects.annotate(Count('kids')).values('name','kids__count')
+
+8.  Parent.objects.annotate(children_count=Count('kids')).aggregate(children_sum=Sum('children_count'))
+
+9.  Parent.objects.all().values().last()
+
+10. Person.objects.annotate(parents_total_sum=Sum('parents__salary')).filter(parents_total_sum__gt=50000).values()
 '''

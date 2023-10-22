@@ -11,8 +11,14 @@ class Person(models.Model):
     date_of_birth = models.DateField()
     city = models.CharField(max_length=50)
 
+    def test_person_is_over_18(self):
+         if self.date_of_birth.year + 18 > 2023:
+             return False
+         else:
+             return True
+
 class Parent(Person):
     work_place = models.CharField(max_length=50, null=True)
-    salary = models.PositiveIntegerField(max_length=6, null=True)
+    salary = models.PositiveIntegerField(MaxValueValidator(limit_value=999999), null=True)
     kids = models.ManyToManyField(Person, related_name='parents', default=[])
     

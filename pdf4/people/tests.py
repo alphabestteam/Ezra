@@ -35,7 +35,7 @@ class PersonTestCase(TestCase):
 
     def test_add_parent(self):
         """Checks if the addParent works"""
-        send = self.client.post(
+        response = self.client.post(
             "/api/addParent/",
             json.dumps(
                 {
@@ -49,4 +49,9 @@ class PersonTestCase(TestCase):
             ),
             content_type="application/json",
         )
-        self.assertEqual(send.status_code, 201)
+        self.assertEqual(response.status_code, 201)
+
+    def test_remove_parent(self):
+        """Checks if the removeParent works"""
+        response = self.client.delete("api/removeParent/123/")
+        self.assertEqual(response.status_code, 200)

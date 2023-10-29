@@ -88,10 +88,15 @@ def add_parent(request):
 @csrf_exempt
 def remove_parent(request, tz):
     if request.method == "DELETE":
-        parent = Parent.objects.get(tz=tz)
+        try:
+            parent = Parent.objects.get(tz=tz)
+        except: 
+            return HttpResponse("person doesn't exist", status=status.HTTP_404_NOT_FOUND)
+        
         parent.delete()
         return HttpResponse("deleted!", status=status.HTTP_200_OK)
-
+    else:
+        return HttpResponse("bad method", status=status.HTTP_400_BAD_REQUEST)
 
 @csrf_exempt
 def update_parent(request):

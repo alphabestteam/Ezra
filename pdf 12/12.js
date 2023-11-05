@@ -70,3 +70,9 @@ for (let i = 0; i < students.length; i++) {
 
 const adults = students.filter(student => student.age >= 18);
 console.log(adults);
+
+
+
+const myCar = {make: 'hyndai', make: 'i30', year: 2015, carAge: function(){
+    // add date
+}}

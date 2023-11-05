@@ -26,7 +26,7 @@ const isSameLength = (arr1, arr2) => arr1.length == arr2.length;
 
 const numberToArray = (arr) => arr.toString().split('').map(Number);
 
-
+const getTruthyFalsyArr = (arr) => arr.map(Boolean);
 
 
 console.log(helloWorld());
@@ -37,6 +37,8 @@ console.log(circle(1));
 console.log(vowelsInWord('what do we think'));
 console.log(isSameLength([1,2,3],[3,4,5,5]));
 console.log(numberToArray(123123));
+console.log(getTruthyFalsyArr([1, 'hello', true, 0, false, "", " ", null, undefined, NaN /
+2, 'world', true, {}, [], 3, "foo", 'true', 'false', "bar"]));
 
 
 

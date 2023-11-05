@@ -74,5 +74,10 @@ console.log(adults);
 
 
 const myCar = {make: 'hyndai', make: 'i30', year: 2015, carAge: function(){
-    // add date
+    date = new Date().getFullYear();
+    return date - this.year;
 }}
+
+console.log(myCar);
+console.log(`carAge: ${myCar.carAge()}`);
+

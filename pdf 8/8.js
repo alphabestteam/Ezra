@@ -65,7 +65,18 @@ console.log(biggerThan10);
 
 /*10.*/ console.log(`you're answer is ` + biggerTrue(biggerThan10));
 
-/*11.*/ 
+/*11.*/ // the reason why it doesn't sort it the way we want it to, is becuase
+        // it treats 1 as bigger than 2 as a string so 10000 is bigger than 2 becuase
+        // 1 is bigger than 2.
+
+/*12.*/ // the way to solve it is to write our own sorting function.
+
+const array1 = [1, 30, 4, 21, 100000];
+array1.sort((a,b) => a-b);
+console.log(array1);
+
+/*13*/ 
+
 
 
 

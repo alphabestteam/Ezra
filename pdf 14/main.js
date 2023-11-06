@@ -47,7 +47,7 @@ console.log(lorem_arr);
 
 /*21*/ const randomWords = document.getElementById("random-words");
 
-/*22*/ lorem_arr.forEach(word => {
+/*22*/  lorem_arr.forEach(word => {
     const span = document.createElement('span');
     const style = 'background-color: ' + randomColor();
     span.setAttribute('style', style);
@@ -56,4 +56,18 @@ console.log(lorem_arr);
     span.className = "random-word";
 
 /*23*/ randomWords.appendChild(span);
+
+
 });
+/* ***********question 14************ */
+const changeColors = () => {
+    wordSpans = document.getElementsByClassName('random-word');
+
+    for (span in wordSpans) {
+
+        wordSpans[span].style.backgroundColor = randomColor();
+
+    }
+}
+const btn = document.getElementById('change-color');
+btn.addEventListener('click', changeColors);

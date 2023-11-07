@@ -38,8 +38,8 @@ function startGame() {
     2 - generate a random quote and display it in the relevant html element
     2* - think carefully how to do it such that you can change the background of each char individually
     */
-  let text = getRandomQuote().split("");
-  text.forEach((element) => {
+  let quoteArr = getRandomQuote().split("");
+  quoteArr.forEach((element) => {
     const span = document.createElement("span");
     const node = document.createTextNode(element);
     span.append(node);
@@ -47,36 +47,21 @@ function startGame() {
   });
 
   const input = document.getElementById("input");
-  input.addEventListener("input", () => checkInput(input, text));
+
+  input.addEventListener("input", () =>
+    checkInput(input.value.split(""), quoteArr)
+  );
 }
 
-const inputArr = [];
-function checkInput(input, text) {
+function checkInput(inputArr, quoteArr) {
   //implement checking input, ending the game by calling the endGame() function when needed.
   //add the relevant css class to each letter
 
-  function addLetter() {
-    const inputText = input.value;
-    console.log(inputArr);
-    return inputArr.push(inputText.charAt(inputText.length - 1));
-  }
-  function removeLetter() {
-    inputArr.pop();
-    console.log(inputArr);
-  }
-
-  let currentLetter;
-
-  input.onkeydown = (event) => {
-    if (event.key === "Backspace") {
-      console.log("backspace");
-      removeLetter();
-    } else {
-      console.log("other");
-      currentLetter = addLetter();
-    }
-  };
-  if (currentLetter == text[inputArr.length - 1]) {
+  // checking if the letter are the same.
+  //   console.log(inputArr, quoteArr);
+  const inputLetter = inputArr[inputArr.length - 1],
+    quoteLetter = quoteArr[inputArr.length - 1];
+  if (inputLetter === quoteLetter) {
     console.log("true");
   } else {
     console.log("false");

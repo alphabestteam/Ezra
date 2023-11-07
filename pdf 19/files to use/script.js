@@ -41,8 +41,20 @@ function questionE(){
     sequenceC();
 }
 
-questionA();
-questionB();
+questionA(); 
+questionB(); 
 questionC();
 questionD();
-questionE();
+// questionE();
+
+/*
+we're dealing with task managing. in general the rule is Main>microThread>callback.
+
+questionA(); - wil return bob,sponge. because plain log is a sync function so it goes in the main task.
+questionB(); - will return bob, promise b, sponge, timeout b. because bob is main, promise b is from type 
+               microthread so it will go next, then will come the timeout's because they're from type callback.
+questionC(); - bob, promise b, promise c, sponge, timeout b, timeout c. same idea as before but the twist is that we'd
+               think that promise c will come at the end because it's a timeout (callback), but because it's inside a promise
+               it run in the microthread part.
+
+*/

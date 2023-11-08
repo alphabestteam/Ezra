@@ -44,9 +44,11 @@ async function project() {
             input.setAttribute("min", 0);
             input.setAttribute("max", 5);
             input.setAttribute("quantity", 0);
-
+            input.setAttribute('id',itemData.id);
+            console.log(itemData.price, itemData.id);
             input.addEventListener("change", () => {
-              const amount = document.querySelector('input').value;
+              
+              const amount = document.getElementById(itemData.id).value;
               console.log(amount + "change" + itemData.price);
               const textForSummary = `${
                 itemData.name

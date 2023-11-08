@@ -7,22 +7,15 @@ List of endpoints:
 */
 
 async function project() {
-  // async function getMenu(menuUrl) {
-  //   fetch(menuUrl);
-  //   // return new Promise((resolve, reject) => {
-  //   //   // need to check if the link is not good.
-  //   //   resolve(fetch(menuUrl));
-  //   //   reject("reject error!");
-  //   // });
-  // }
-
-  const abc = fetch("http://localhost:8000/menu")
+  const setupMenu = fetch("http://localhost:8000/menu")
     .then((res) => res.json())
     .then((data) => {
       document.getElementById("loader").style.display = "none";
       const menuDiv = document.getElementById("menu");
       console.log(data);
-
+      const updateCart = (amount, price) => {
+        console.log(amount, price);
+      };
       for (key in data) {
         // console.log(typeof data[key]);
         if (typeof data[key] === "object") {
@@ -50,6 +43,19 @@ async function project() {
             input.setAttribute("type", "number");
             input.setAttribute("min", 0);
             input.setAttribute("max", 5);
+            input.setAttribute("quantity", 0);
+
+            input.addEventListener("change", () => {
+              const amount = document.querySelector('input').value;
+              console.log(amount + "change" + itemData.price);
+              const textForSummary = `${
+                itemData.name
+              } (${amount} x $${itemData.price.toFixed(2)} = $${(
+                amount * itemData.price
+              ).toFixed(2)})`;
+              const orderSummary = document.getElementById("order-summary");
+              orderSummary.querySelector("p").textContent = textForSummary;
+            });
             const lText = document.createTextNode("Quantity:");
 
             label.append(lText, input);
@@ -58,6 +64,7 @@ async function project() {
         }
       }
     });
+  console.log(await setupMenu);
 }
 
 project();

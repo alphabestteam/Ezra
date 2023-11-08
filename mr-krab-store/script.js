@@ -51,11 +51,16 @@ async function project() {
               console.log(amount + "change" + itemData.price);
               let textForSummary = "";
               console.log(data[key]);
+
+              const orderSummary = document.getElementById("order-summary");
+              let count = 0;
               for (attribute in data[key]) {
+                orderSummary.querySelector("p").textContent = "Empty Order";
 
                 let itemData = data[key][attribute];
                 const amount = document.getElementById(itemData.id).value;
                 if (amount == 0) {
+                  count++;
                   continue;
                 }
                 textForSummary += `${
@@ -64,7 +69,10 @@ async function project() {
                   amount * itemData.price
                 ).toFixed(2)})`;
               }
-              const orderSummary = document.getElementById("order-summary");
+              if (count == 4) {
+                orderSummary.querySelector("p").textContent = "Empty Order";
+              }
+
               orderSummary.querySelector("p").textContent = textForSummary;
             });
 

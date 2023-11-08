@@ -17,14 +17,47 @@ async function project() {
   // }
 
   const abc = fetch("http://localhost:8000/menu")
-  .then(res => res.json())
-  .then(data => {
-    document.getElementById("loader").style.display = "none";
-    
-    document.getElementById("menu").textContent = JSON.stringify(data);
-  
-  });
+    .then((res) => res.json())
+    .then((data) => {
+      document.getElementById("loader").style.display = "none";
+      const menuDiv = document.getElementById("menu");
+      console.log(data);
 
+      for (key in data) {
+        // console.log(typeof data[key]);
+        if (typeof data[key] === "object") {
+          for (nestedKey in data[key]) {
+            // console.log(typeof data[key][nestedKey]);
+            const itemData = data[key][nestedKey];
+            console.log(itemData.price);
+            const span = document.createElement("span");
+            span.className = "item";
+            const h3 = document.createElement("h3");
+            const text = document.createTextNode(
+              `${itemData.name} ($${itemData.price.toFixed(2)})`
+            );
+            h3.append(text);
+            span.append(h3);
+            menuDiv.append(span);
+
+            const p = document.createElement("p");
+            const pText = document.createTextNode(itemData.description);
+            p.append(pText);
+            span.append(p);
+
+            const label = document.createElement("label");
+            const input = document.createElement("input");
+            input.setAttribute("type", "number");
+            input.setAttribute("min", 0);
+            input.setAttribute("max", 5);
+            const lText = document.createTextNode("Quantity:");
+
+            label.append(lText, input);
+            span.append(label);
+          }
+        }
+      }
+    });
 }
 
 project();

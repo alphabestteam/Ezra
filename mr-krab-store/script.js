@@ -44,20 +44,30 @@ async function project() {
             input.setAttribute("min", 0);
             input.setAttribute("max", 5);
             input.setAttribute("quantity", 0);
-            input.setAttribute('id',itemData.id);
+            input.setAttribute("id", itemData.id);
             console.log(itemData.price, itemData.id);
             input.addEventListener("change", () => {
-              
               const amount = document.getElementById(itemData.id).value;
               console.log(amount + "change" + itemData.price);
-              const textForSummary = `${
-                itemData.name
-              } (${amount} x $${itemData.price.toFixed(2)} = $${(
-                amount * itemData.price
-              ).toFixed(2)})`;
+              let textForSummary = "";
+              console.log(data[key]);
+              for (attribute in data[key]) {
+
+                let itemData = data[key][attribute];
+                const amount = document.getElementById(itemData.id).value;
+                if (amount == 0) {
+                  continue;
+                }
+                textForSummary += `${
+                  itemData.name
+                } (${amount} x $${itemData.price.toFixed(2)} = $${(
+                  amount * itemData.price
+                ).toFixed(2)})`;
+              }
               const orderSummary = document.getElementById("order-summary");
               orderSummary.querySelector("p").textContent = textForSummary;
             });
+
             const lText = document.createTextNode("Quantity:");
 
             label.append(lText, input);

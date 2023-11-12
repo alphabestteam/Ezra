@@ -25,11 +25,18 @@ const quotes = [
   "SpongeBob: I'm a Goofy Goober, yeah. You're a Goofy Goober, yeah. We're all Goofy Goobers, yeah. Goofy, goofy, goober, goober, yeah!",
   "SpongeBob: Once there was an ugly barnacle. He was so ugly that everyone died. The end.",
 ];
-
+let isFunctionEnabled = true;
+let startTime = 0;
+let quoteWordCount = 0;
 function getRandomQuote() {
-  //implement getting a random quote from the array.
-  const randomQuote = Math.floor(Math.random() * quotes.length);
-  return quotes[randomQuote];
+  if (isFunctionEnabled) {
+    //implement getting a random quote from the array.
+    const randomQuote = Math.floor(Math.random() * quotes.length);
+    isFunctionEnabled = false;
+    return quotes[randomQuote];
+  } else {
+    return;
+  }
 }
 
 function startGame() {
@@ -38,7 +45,15 @@ function startGame() {
     2 - generate a random quote and display it in the relevant html element
     2* - think carefully how to do it such that you can change the background of each char individually
     */
-  let quoteArr = getRandomQuote().split("");
+
+  // starting timer
+  startTime = Date.now();
+  let timer = document.getElementById('timer');
+  // figure out live timer on page.
+
+  let quote = getRandomQuote();
+  quoteWordCount = quote.split(" ").length;
+  let quoteArr = quote.split("");
   quoteArr.forEach((element) => {
     const span = document.createElement("span");
     span.classList.add("span-letter");
@@ -65,40 +80,114 @@ function checkInput(inputArr, quoteArr, event) {
 
   if (event.inputType === "deleteContentBackward") {
     spanElm[index + 1].className = "backspace";
-
   } else {
     if (inputLetter === quoteLetter) {
-
       if (spanElm[index].dataset.customVar === "incorrect") {
         spanElm[index].className = "light-yellow";
         console.log("almost true");
         console.log(spanElm[index]);
+        if (inputArr.length === quoteArr.length) {
+          endGame(inputArr, quoteArr);
+        }
       } else {
         spanElm[index].className = "correct";
         console.log("true");
         console.log(spanElm[index]);
+        if (inputArr.length === quoteArr.length) {
+          endGame(inputArr, quoteArr);
+        }
       }
     } else {
       spanElm[index].className = "incorrect";
-      spanElm[index].dataset.customVar = 'incorrect'; // in a case where you make a backspace.
+      spanElm[index].dataset.customVar = "incorrect"; // in a case where you make a backspace.
       console.log("false");
       console.log(spanElm[index]);
+      if (inputArr.length === quoteArr.length) {
+        endGame(inputArr, quoteArr);
+      }
     }
   }
 }
 
-function countMatchingChars(strA, strB) {
+function countMatchingChars(inputArr, quoteArr) {
   //helper function used to calculate hits, used for percentage.
+  let correct = 0;
+  for (let i = 0; i < inputArr.length; i++) {
+    if (inputArr[i] === quoteArr[i]) {
+      correct++;
+    }
+  }
+
+  return [correct, inputArr.length];
 }
 
-function endGame() {
+function endGame(inputArr, quoteArr) {
   //stop the timer, calculate elapsed time in seconds
   //in the result element display:
   //  a) how many words were typed
   //  b) in how many seconds it was done
   //  c) the speed (wpm)
   //  d) the accuracy as percentage
+
+  let timeTaken = Date.now() - startTime;
+  console.log(timeTaken);
+
+  document.getElementById("input").disabled = true;
+  var br = document.createElement("br");
+
+  const result = document.getElementById("result");
+  // checking amount of words.
+  const words = document.createTextNode(`you typed ${quoteWordCount} words`);
+  result.appendChild(words);
+  result.appendChild(br);
+
+  console.log(`you typed ${quoteWordCount} words`);
+
+  // how many seconds
+  const second = document.createTextNode(
+    `in ${(timeTaken / 1000).toFixed(1)} seconds. \n`
+  );
+  result.appendChild(second);
+  var br2 = document.createElement("br");
+
+  result.appendChild(br2);
+
+  console.log(`in ${timeTaken / 1000} seconds`);
+
+  // wpm
+  timeMin = timeTaken / 1000 / 60;
+  const wpm = document.createTextNode(
+    `Your speed is ${Math.round(quoteWordCount / timeMin)} wpm.`
+  );
+  result.appendChild(wpm);
+  var br3 = document.createElement("br");
+
+  result.appendChild(br3);
+
+  console.log(`wpm of ${(quoteWordCount / timeMin).toFixed(2)}`);
+
+  // accuracy
+  [correct, length] = countMatchingChars(inputArr, quoteArr);
+  const match = document.createTextNode(
+    `with ${Math.round((correct / length) * 100)}% accuracy.`
+  );
+  result.appendChild(match);
+  var br4 = document.createElement("br");
+
+  result.appendChild(br4);
+
+  console.log(
+    `you hit ${correct} out of ${length} (%${((correct / length) * 100).toFixed(
+      2
+    )})`
+  );
 }
 
 const startButton = document.getElementById("start-btn");
 startButton.addEventListener("click", startGame);
+document.addEventListener("keydown", (even) => {
+  if (even.key === "Enter") {
+    console.log("enter pressed");
+    startGame();
+  }
+});

@@ -65,9 +65,11 @@ function checkInput(inputArr, quoteArr, event) {
 
   if (event.inputType === "deleteContentBackward") {
     spanElm[index + 1].className = "backspace";
+
   } else {
     if (inputLetter === quoteLetter) {
-      if (spanElm[index].className === "incorrect") {
+
+      if (spanElm[index].dataset.customVar === "incorrect") {
         spanElm[index].className = "light-yellow";
         console.log("almost true");
         console.log(spanElm[index]);
@@ -78,6 +80,7 @@ function checkInput(inputArr, quoteArr, event) {
       }
     } else {
       spanElm[index].className = "incorrect";
+      spanElm[index].dataset.customVar = 'incorrect'; // in a case where you make a backspace.
       console.log("false");
       console.log(spanElm[index]);
     }

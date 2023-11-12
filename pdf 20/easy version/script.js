@@ -49,29 +49,38 @@ function startGame() {
 
   const input = document.getElementById("input");
 
-  input.addEventListener("input", () =>
-    checkInput(input.value.split(""), quoteArr)
+  input.addEventListener("input", (event) =>
+    checkInput(input.value.split(""), quoteArr, event)
   );
 }
 
-function checkInput(inputArr, quoteArr) {
+// inputArr - array of input field. quoteArr - array of quote.
+function checkInput(inputArr, quoteArr, event) {
   //implement checking input, ending the game by calling the endGame() function when needed.
   //add the relevant css class to each letter
-
   const spanElm = document.getElementsByTagName("span");
   let index = inputArr.length - 1;
   const inputLetter = inputArr[index],
-    quoteLetter = quoteArr[index];
-  if (inputLetter === quoteLetter) {
-    spanElm[index].className = "correct";
-    // remove background if no on it.
-    console.log("true");
-    console.log(spanElm[index]);
+    quoteLetter = spanElm[index].textContent;
+
+  if (event.inputType === "deleteContentBackward") {
+    spanElm[index + 1].className = "backspace";
   } else {
-    spanElm[index].className = "incorrect";
-    // remove background if no on it.
-    console.log("false");
-    console.log(spanElm[index]);
+    if (inputLetter === quoteLetter) {
+      if (spanElm[index].className === "incorrect") {
+        spanElm[index].className = "light-yellow";
+        console.log("almost true");
+        console.log(spanElm[index]);
+      } else {
+        spanElm[index].className = "correct";
+        console.log("true");
+        console.log(spanElm[index]);
+      }
+    } else {
+      spanElm[index].className = "incorrect";
+      console.log("false");
+      console.log(spanElm[index]);
+    }
   }
 }
 

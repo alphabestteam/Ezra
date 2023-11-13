@@ -48,7 +48,7 @@ function startGame() {
 
   // starting timer
   startTime = Date.now();
-  let timer = document.getElementById('timer');
+  let timer = document.getElementById("timer");
   // figure out live timer on page.
 
   let quote = getRandomQuote();
@@ -73,15 +73,12 @@ function startGame() {
 function checkInput(inputArr, quoteArr, event) {
   //implement checking input, ending the game by calling the endGame() function when needed.
   //add the relevant css class to each letter
+  
   const spanElm = document.getElementsByTagName("span");
   let index = inputArr.length - 1;
-  const inputLetter = inputArr[index],
-    quoteLetter = spanElm[index].textContent;
 
-  if (event.inputType === "deleteContentBackward") {
-    spanElm[index + 1].className = "backspace";
-  } else {
-    if (inputLetter === quoteLetter) {
+  for (let i = 0; i < inputArr.length; i++) {
+    if (inputArr[i] === quoteArr[i]) {
       if (spanElm[index].dataset.customVar === "incorrect") {
         spanElm[index].className = "light-yellow";
         console.log("almost true");
@@ -106,6 +103,9 @@ function checkInput(inputArr, quoteArr, event) {
         endGame(inputArr, quoteArr);
       }
     }
+  }
+  for (let y = inputArr.length; y < quoteArr.length; y++) {
+    spanElm[y].className = "dark";
   }
 }
 

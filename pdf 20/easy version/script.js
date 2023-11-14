@@ -28,6 +28,8 @@ const quotes = [
 let isFunctionEnabled = true;
 let startTime = 0;
 let quoteWordCount = 0;
+let timeInterval;
+
 function getRandomQuote() {
   if (isFunctionEnabled) {
     //implement getting a random quote from the array.
@@ -48,9 +50,13 @@ function startGame() {
 
   // starting timer
   startTime = Date.now();
-  let timer = document.getElementById("timer");
-  // figure out live timer on page.
+  timeInterval = setInterval(() => {
+    document.getElementById("timer").textContent = `Time: ${Math.round(
+      (Date.now() - startTime) / 1000
+    )}s`;
+  }, 1000);
 
+  // getting and formatting the quote
   let quote = getRandomQuote();
   quoteWordCount = quote.split(" ").length;
   let quoteArr = quote.split("");
@@ -62,52 +68,59 @@ function startGame() {
     document.getElementById("quote").appendChild(span);
   });
 
+  // getting input and adding an event listener
   const input = document.getElementById("input");
-
-  input.addEventListener("input", (event) =>
-    checkInput(input.value.split(""), quoteArr, event)
+  input.addEventListener("input", () =>
+    checkInput(input.value.split(""), quoteArr)
   );
 }
 
 // inputArr - array of input field. quoteArr - array of quote.
-function checkInput(inputArr, quoteArr, event) {
+function checkInput(inputArr, quoteArr) {
   //implement checking input, ending the game by calling the endGame() function when needed.
   //add the relevant css class to each letter
-  
-  const spanElm = document.getElementsByTagName("span");
+
+  // starting up the checking function
+  const spanElm = document.getElementsByTagName("span"); // span list of all letters in the quote
   let index = inputArr.length - 1;
+
+  function checkEndGame() {
+    console.log("checking end game..............");
+    console.log(
+      `input length: ${inputArr.length} \nquote length: ${quoteArr.length}`
+    );
+    if (inputArr.length === quoteArr.length) {
+      console.log("went in");
+      endGame(inputArr, quoteArr);
+    }
+  }
 
   for (let i = 0; i < inputArr.length; i++) {
     if (inputArr[i] === quoteArr[i]) {
-      if (spanElm[index].dataset.customVar === "incorrect") {
-        spanElm[index].className = "light-yellow";
+      if (spanElm[i].dataset.customVar === "incorrect") {
+        spanElm[i].className = "light-yellow";
         console.log("almost true");
-        console.log(spanElm[index]);
-        if (inputArr.length === quoteArr.length) {
-          endGame(inputArr, quoteArr);
-        }
+        console.log(spanElm[i]);
+        checkEndGame();
       } else {
         spanElm[index].className = "correct";
         console.log("true");
-        console.log(spanElm[index]);
-        if (inputArr.length === quoteArr.length) {
-          endGame(inputArr, quoteArr);
-        }
+        console.log(spanElm[i]);
+        checkEndGame();
       }
     } else {
-      spanElm[index].className = "incorrect";
-      spanElm[index].dataset.customVar = "incorrect"; // in a case where you make a backspace.
+      spanElm[i].className = "incorrect";
+      spanElm[i].dataset.customVar = "incorrect"; // in a case where you make a backspace. to remember for the yellow
       console.log("false");
-      console.log(spanElm[index]);
-      if (inputArr.length === quoteArr.length) {
-        endGame(inputArr, quoteArr);
-      }
+      console.log(spanElm[i]);
+      checkEndGame();
     }
   }
   for (let y = inputArr.length; y < quoteArr.length; y++) {
     spanElm[y].className = "dark";
   }
 }
+
 
 function countMatchingChars(inputArr, quoteArr) {
   //helper function used to calculate hits, used for percentage.
@@ -128,7 +141,8 @@ function endGame(inputArr, quoteArr) {
   //  b) in how many seconds it was done
   //  c) the speed (wpm)
   //  d) the accuracy as percentage
-
+  // clearInterval(timeInterval);
+  clearInterval(timeInterval);
   let timeTaken = Date.now() - startTime;
   console.log(timeTaken);
 
@@ -181,6 +195,7 @@ function endGame(inputArr, quoteArr) {
       2
     )})`
   );
+  exit();
 }
 
 const startButton = document.getElementById("start-btn");

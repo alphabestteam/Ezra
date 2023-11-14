@@ -25,14 +25,15 @@ const quotes = [
   "SpongeBob: I'm a Goofy Goober, yeah. You're a Goofy Goober, yeah. We're all Goofy Goobers, yeah. Goofy, goofy, goober, goober, yeah!",
   "SpongeBob: Once there was an ugly barnacle. He was so ugly that everyone died. The end.",
 ];
+
 let isFunctionEnabled = true;
 let startTime = 0;
 let quoteWordCount = 0;
 let timeInterval;
 
 function getRandomQuote() {
+  // making sure that you can only play once.
   if (isFunctionEnabled) {
-    //implement getting a random quote from the array.
     const randomQuote = Math.floor(Math.random() * quotes.length);
     isFunctionEnabled = false;
     return quotes[randomQuote];
@@ -42,12 +43,6 @@ function getRandomQuote() {
 }
 
 function startGame() {
-  /*
-    1 - implement game start/restart logic 
-    2 - generate a random quote and display it in the relevant html element
-    2* - think carefully how to do it such that you can change the background of each char individually
-    */
-
   // starting timer
   startTime = Date.now();
   timeInterval = setInterval(() => {
@@ -75,132 +70,86 @@ function startGame() {
   );
 }
 
-// inputArr - array of input field. quoteArr - array of quote.
 function checkInput(inputArr, quoteArr) {
-  //implement checking input, ending the game by calling the endGame() function when needed.
-  //add the relevant css class to each letter
-
   // starting up the checking function
   const spanElm = document.getElementsByTagName("span"); // span list of all letters in the quote
   let index = inputArr.length - 1;
 
   function checkEndGame() {
-    // console.log("checking end game..............");
-    // console.log(
-    //   `input length: ${inputArr.length} \nquote length: ${quoteArr.length}`
-    // );
     if (inputArr.length === quoteArr.length) {
       endGame(inputArr, quoteArr);
     }
   }
 
+  // iterating over all the letters to see if they match.
   for (let i = 0; i < inputArr.length; i++) {
     console.log(`inputarr: ${inputArr[i]} quotearr: ${quoteArr[i]}`);
     if (inputArr[i] === quoteArr[i]) {
       if (spanElm[i].dataset.customVar === "incorrect") {
+        // meaning we deleted an error and have fixed it.
         spanElm[i].className = "light-yellow";
-        console.log("yellow");
-        console.log(spanElm[i]);
       } else {
         spanElm[index].className = "correct";
-        console.log("green");
-        console.log(spanElm[i]);
       }
     } else {
       spanElm[i].className = "incorrect";
       spanElm[i].dataset.customVar = "incorrect"; // in a case where you make a backspace. to remember for the yellow
-      console.log("red");
-      console.log(spanElm[i]);
     }
   }
+  // coloring all rest of letters dark.
   for (let y = inputArr.length; y < quoteArr.length; y++) {
     spanElm[y].className = "dark";
   }
   checkEndGame();
 }
 
+// counts how many characters are the same.
 function countMatchingChars(inputArr, quoteArr) {
-  //helper function used to calculate hits, used for percentage.
   let correct = 0;
   for (let i = 0; i < inputArr.length; i++) {
     if (inputArr[i] === quoteArr[i]) {
       correct++;
     }
   }
-
   return [correct, inputArr.length];
 }
 
 function endGame(inputArr, quoteArr) {
-  //stop the timer, calculate elapsed time in seconds
-  //in the result element display:
-  //  a) how many words were typed
-  //  b) in how many seconds it was done
-  //  c) the speed (wpm)
-  //  d) the accuracy as percentage
-  // clearInterval(timeInterval);
+  // stops timer
   clearInterval(timeInterval);
   let timeTaken = Date.now() - startTime;
-  console.log(timeTaken);
 
-  document.getElementById("input").disabled = true;
+  // break
   var br = document.createElement("br");
 
+  // getting result area
   const result = document.getElementById("result");
-  // checking amount of words.
-  const words = document.createTextNode(`you typed ${quoteWordCount} words`);
-  result.appendChild(words);
-  result.appendChild(br);
 
-  console.log(`you typed ${quoteWordCount} words`);
+  // amount of words
+  const words = `you typed ${quoteWordCount} words`;
 
   // how many seconds
-  const second = document.createTextNode(
-    `in ${(timeTaken / 1000).toFixed(1)} seconds. \n`
-  );
-  result.appendChild(second);
-  var br2 = document.createElement("br");
-
-  result.appendChild(br2);
-
-  console.log(`in ${timeTaken / 1000} seconds`);
+  const second = `in ${(timeTaken / 1000).toFixed(1)} seconds.`;
 
   // wpm
   timeMin = timeTaken / 1000 / 60;
-  const wpm = document.createTextNode(
-    `Your speed is ${Math.round(quoteWordCount / timeMin)} wpm.`
-  );
-  result.appendChild(wpm);
-  var br3 = document.createElement("br");
-
-  result.appendChild(br3);
-
-  console.log(`wpm of ${(quoteWordCount / timeMin).toFixed(2)}`);
+  const wpm = `Your speed is ${Math.round(quoteWordCount / timeMin)} wpm.`;
 
   // accuracy
   [correct, length] = countMatchingChars(inputArr, quoteArr);
-  const match = document.createTextNode(
-    `with ${Math.round((correct / length) * 100)}% accuracy.`
-  );
-  result.appendChild(match);
-  var br4 = document.createElement("br");
+  const match = `with ${Math.round((correct / length) * 100)}% accuracy.`;
 
-  result.appendChild(br4);
-
-  console.log(
-    `you hit ${correct} out of ${length} (%${((correct / length) * 100).toFixed(
-      2
-    )})`
-  );
-  
+  // setting result text
+  result.setAttribute("style", "white-space: pre;");
+  result.textContent = words + "\n" + second + "\n" + wpm + "\n" + match;
 }
 
-
+// starting game
 const startButton = document.getElementById("start-btn");
 startButton.addEventListener("click", startGame);
 document.addEventListener("keydown", (even) => {
   if (even.key === "Enter") {
-    console.log("enter pressed");
+    document.getElementById("input").focus();
     startGame();
   }
 });

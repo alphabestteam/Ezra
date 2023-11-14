@@ -127,22 +127,73 @@ function endGame(inputArr, quoteArr) {
   const result = document.getElementById("result");
 
   // amount of words
-  const words = `you typed ${quoteWordCount} words`;
+  const words = quoteWordCount;
+  const wordsText = `you typed ${words} words`;
 
   // how many seconds
-  const second = `in ${(timeTaken / 1000).toFixed(1)} seconds.`;
+  const time = (timeTaken / 1000).toFixed(1);
+  const timeText = `in ${time} seconds.`;
 
   // wpm
   timeMin = timeTaken / 1000 / 60;
-  const wpm = `Your speed is ${Math.round(quoteWordCount / timeMin)} wpm.`;
+  const wmp = Math.round(quoteWordCount / timeMin);
+  const wpmText = `Your speed is ${wmp} wpm.`;
 
   // accuracy
   [correct, length] = countMatchingChars(inputArr, quoteArr);
-  const match = `with ${Math.round((correct / length) * 100)}% accuracy.`;
+  const accuracy = Math.round((correct / length) * 100);
+  const accuracyText = `with ${accuracy}% accuracy.`;
 
   // setting result text
   result.setAttribute("style", "white-space: pre;");
-  result.textContent = words + "\n" + second + "\n" + wpm + "\n" + match;
+  result.textContent =
+    wordsText + "\n" + timeText + "\n" + wpmText + "\n" + accuracyText;
+
+  addToJson(words, time, wmp, accuracy);
+}
+
+function addToJson(words, time, wmp, accuracy) {
+  const inputData = {
+    words: words,
+    time: time,
+    wmp: wmp,
+    accuracy: accuracy,
+  };
+
+  // getting the data
+  const existingData = JSON.parse(localStorage.getItem("userData")) || []; // || [] - if the array is empty
+
+  // adding data
+  existingData.push(inputData);
+
+  // setting data back
+  localStorage.setItem("userData", JSON.stringify(existingData));
+
+  console.log(existingData);
+
+  createTable();
+}
+
+function createTable() {
+  const container = document.getElementsByClassName("container");
+  const table = document.createElement("table");
+  
+  const headRow = table.insertRow(0);
+
+  const cellRank = headRow.insertCell(0);
+  cellRank.textContent = "Rank";
+  const cellWords = headRow.insertCell(1);
+  cellWords.textContent = "Words";
+  const cellTime = headRow.insertCell(2);
+  cellTime.textContent = "Time";
+  const cellWPM = headRow.insertCell(3);
+  cellWPM.textContent = "WPM";
+  const cellAccuracy = headRow.insertCell(4);
+  cellAccuracy.textContent = "Accuracy";
+  const cellScore = headRow.insertCell(5);
+  cellScore.textContent = "Score";
+  
+  container.append(table);
 }
 
 // starting game

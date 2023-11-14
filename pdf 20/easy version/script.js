@@ -73,7 +73,6 @@ function startGame() {
 function checkInput(inputArr, quoteArr) {
   // starting up the checking function
   const spanElm = document.getElementsByTagName("span"); // span list of all letters in the quote
-  let index = inputArr.length - 1;
 
   function checkEndGame() {
     if (inputArr.length === quoteArr.length) {
@@ -83,13 +82,12 @@ function checkInput(inputArr, quoteArr) {
 
   // iterating over all the letters to see if they match.
   for (let i = 0; i < inputArr.length; i++) {
-    console.log(`inputarr: ${inputArr[i]} quotearr: ${quoteArr[i]}`);
     if (inputArr[i] === quoteArr[i]) {
+      // meaning we deleted an error and have fixed it.
       if (spanElm[i].dataset.customVar === "incorrect") {
-        // meaning we deleted an error and have fixed it.
         spanElm[i].className = "light-yellow";
       } else {
-        spanElm[index].className = "correct";
+        spanElm[i].className = "correct";
       }
     } else {
       spanElm[i].className = "incorrect";
@@ -118,6 +116,9 @@ function endGame(inputArr, quoteArr) {
   // stops timer
   clearInterval(timeInterval);
   let timeTaken = Date.now() - startTime;
+
+  //disabled input field
+  document.getElementById("input").disabled = true;
 
   // break
   var br = document.createElement("br");

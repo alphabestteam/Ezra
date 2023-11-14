@@ -85,42 +85,39 @@ function checkInput(inputArr, quoteArr) {
   let index = inputArr.length - 1;
 
   function checkEndGame() {
-    console.log("checking end game..............");
-    console.log(
-      `input length: ${inputArr.length} \nquote length: ${quoteArr.length}`
-    );
+    // console.log("checking end game..............");
+    // console.log(
+    //   `input length: ${inputArr.length} \nquote length: ${quoteArr.length}`
+    // );
     if (inputArr.length === quoteArr.length) {
-      console.log("went in");
       endGame(inputArr, quoteArr);
     }
   }
 
   for (let i = 0; i < inputArr.length; i++) {
+    console.log(`inputarr: ${inputArr[i]} quotearr: ${quoteArr[i]}`);
     if (inputArr[i] === quoteArr[i]) {
       if (spanElm[i].dataset.customVar === "incorrect") {
         spanElm[i].className = "light-yellow";
-        console.log("almost true");
+        console.log("yellow");
         console.log(spanElm[i]);
-        checkEndGame();
       } else {
         spanElm[index].className = "correct";
-        console.log("true");
+        console.log("green");
         console.log(spanElm[i]);
-        checkEndGame();
       }
     } else {
       spanElm[i].className = "incorrect";
       spanElm[i].dataset.customVar = "incorrect"; // in a case where you make a backspace. to remember for the yellow
-      console.log("false");
+      console.log("red");
       console.log(spanElm[i]);
-      checkEndGame();
     }
   }
   for (let y = inputArr.length; y < quoteArr.length; y++) {
     spanElm[y].className = "dark";
   }
+  checkEndGame();
 }
-
 
 function countMatchingChars(inputArr, quoteArr) {
   //helper function used to calculate hits, used for percentage.
@@ -195,8 +192,9 @@ function endGame(inputArr, quoteArr) {
       2
     )})`
   );
-  exit();
+  
 }
+
 
 const startButton = document.getElementById("start-btn");
 startButton.addEventListener("click", startGame);

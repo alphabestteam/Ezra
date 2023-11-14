@@ -2,4 +2,9 @@
 2. only allow backspace. ✅
 3. add live timer. ✅
 4. sometimes the letter are colored yellow for no reason. ✅
-5. last letter doesn't color.
+5. last letter doesn't color. ✅
+
+----- possible future extensions -----
+6. add restart game function. 
+7. add progress bar.
+8. add option of picking the text.

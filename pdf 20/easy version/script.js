@@ -153,15 +153,10 @@ function endGame(inputArr, quoteArr) {
 }
 
 function addToJson(words, time, wmp, accuracy) {
-  const inputData = {
-    words: words,
-    time: time,
-    wmp: wmp,
-    accuracy: accuracy,
-  };
+  const inputData = [words, time, wmp, accuracy];
 
   // getting the data
-  const existingData = JSON.parse(localStorage.getItem("userData")) || []; // || [] - if the array is empty
+  let existingData = JSON.parse(localStorage.getItem("userData")) || []; // || [] - if the array is empty
 
   // adding data
   existingData.push(inputData);
@@ -171,29 +166,31 @@ function addToJson(words, time, wmp, accuracy) {
 
   console.log(existingData);
 
-  createTable();
+  createTable(existingData);
 }
 
-function createTable() {
-  const container = document.getElementsByClassName("container");
-  const table = document.createElement("table");
-  
-  const headRow = table.insertRow(0);
+function createTable(tableData) {
+  console.log(tableData);
+  const container = document.querySelector("div");
+  console.log(container);
 
-  const cellRank = headRow.insertCell(0);
-  cellRank.textContent = "Rank";
-  const cellWords = headRow.insertCell(1);
-  cellWords.textContent = "Words";
-  const cellTime = headRow.insertCell(2);
-  cellTime.textContent = "Time";
-  const cellWPM = headRow.insertCell(3);
-  cellWPM.textContent = "WPM";
-  const cellAccuracy = headRow.insertCell(4);
-  cellAccuracy.textContent = "Accuracy";
-  const cellScore = headRow.insertCell(5);
-  cellScore.textContent = "Score";
+  const table = document.createElement("table");
+  table.setAttribute("border", "1");
+
+  // Create the table header
+  const thead = document.createElement("thead");
+  const headerRow = document.createElement("tr");
+  const tableHead = ["Rank", "Words", "Time", "WPM", "Accuracy", "Score"];
+  tableHead.forEach((headerText) => {
+    const th = document.createElement("th");
+    th.appendChild(document.createTextNode(headerText));
+    headerRow.appendChild(th);
+  });
   
-  container.append(table);
+  thead.appendChild(headerRow);
+  table.appendChild(thead);
+
+  container.appendChild(table);
 }
 
 // starting game

@@ -8,3 +8,11 @@
 6. add restart game function. 
 7. add progress bar.
 8. add option of picking the text.
+
+
+
+-------------------- question 21 --------------------
+1. fix rank and score
+2. style the table
+3. center the table
+3

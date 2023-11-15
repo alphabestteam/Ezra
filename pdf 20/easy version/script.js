@@ -43,6 +43,8 @@ function getRandomQuote() {
 }
 
 function startGame() {
+  document.getElementById("input").focus();
+
   // starting timer
   startTime = Date.now();
   timeInterval = setInterval(() => {
@@ -120,7 +122,6 @@ function endGame(inputArr, quoteArr) {
   //disabled input field
   document.getElementById("input").disabled = true;
 
-  // break
   var br = document.createElement("br");
 
   // getting result area
@@ -153,34 +154,33 @@ function endGame(inputArr, quoteArr) {
 }
 
 function addToJson(words, time, wmp, accuracy) {
-  const inputData = [words, time, wmp, accuracy];
+  const score = wmp * accuracy;
+  const inputData = [words, time, wmp, accuracy, score];
 
   // getting the data
   let existingData = JSON.parse(localStorage.getItem("userData")) || []; // || [] - if the array is empty
 
   // adding data
   existingData.push(inputData);
+  existingData.sort((a, b) => b[4] - a[4]); // sorting based on the score
 
   // setting data back
   localStorage.setItem("userData", JSON.stringify(existingData));
-
-  console.log(existingData);
 
   createTable(existingData);
 }
 
 function createTable(tableData) {
-  console.log(tableData);
   const container = document.querySelector("div");
-  console.log(container);
 
   const table = document.createElement("table");
-  table.setAttribute("border", "1");
 
   // Create the table header
   const thead = document.createElement("thead");
   const headerRow = document.createElement("tr");
+
   const tableHead = ["Rank", "Words", "Time", "WPM", "Accuracy", "Score"];
+
   tableHead.forEach((headerText) => {
     const th = document.createElement("th");
     th.appendChild(document.createTextNode(headerText));
@@ -194,8 +194,14 @@ function createTable(tableData) {
 
   for (let i = 0; i < tableData.length; i++) {
     const rowData = tableData[i];
-    const row = document.createElement("tr");
 
+    // adding rank
+    const row = document.createElement("tr");
+    const td = document.createElement("td");
+    td.appendChild(document.createTextNode(i + 1));
+    row.appendChild(td);
+
+    // adding rest of data
     rowData.forEach((cellData) => {
       const td = document.createElement("td");
       td.appendChild(document.createTextNode(cellData));
@@ -206,9 +212,10 @@ function createTable(tableData) {
   }
 
   table.appendChild(tbody);
-  
-  
   container.appendChild(table);
+  /* i decided to create the css in the css file, 
+  as there was a lot of styling.
+  */
 }
 
 // starting game
@@ -216,7 +223,6 @@ const startButton = document.getElementById("start-btn");
 startButton.addEventListener("click", startGame);
 document.addEventListener("keydown", (even) => {
   if (even.key === "Enter") {
-    document.getElementById("input").focus();
     startGame();
   }
 });

@@ -186,10 +186,28 @@ function createTable(tableData) {
     th.appendChild(document.createTextNode(headerText));
     headerRow.appendChild(th);
   });
-  
   thead.appendChild(headerRow);
   table.appendChild(thead);
 
+  // Adding table data
+  const tbody = document.createElement("tbody");
+
+  for (let i = 0; i < tableData.length; i++) {
+    const rowData = tableData[i];
+    const row = document.createElement("tr");
+
+    rowData.forEach((cellData) => {
+      const td = document.createElement("td");
+      td.appendChild(document.createTextNode(cellData));
+      row.appendChild(td);
+    });
+
+    tbody.appendChild(row);
+  }
+
+  table.appendChild(tbody);
+  
+  
   container.appendChild(table);
 }
 

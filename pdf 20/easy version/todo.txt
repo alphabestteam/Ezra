@@ -1,0 +1,18 @@
+1. first letter background color don't vanish after removing. ✅
+2. only allow backspace. ✅
+3. add live timer. ✅
+4. sometimes the letter are colored yellow for no reason. ✅
+5. last letter doesn't color. ✅
+
+----- possible future extensions -----
+6. add restart game function. 
+7. add progress bar.
+8. add option of picking the text.
+
+
+
+-------------------- question 21 --------------------
+1. fix rank and score
+2. style the table
+3. center the table
+3

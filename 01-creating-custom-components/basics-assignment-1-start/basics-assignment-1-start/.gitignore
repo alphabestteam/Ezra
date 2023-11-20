@@ -44,3 +44,5 @@ Thumbs.db
 
 # additional files
 package-lock.json
+
+.angular

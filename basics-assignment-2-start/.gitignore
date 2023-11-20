@@ -28,6 +28,7 @@ yarn-error.log
 !.vscode/extensions.json
 .history/*
 .vscode
+
 # Miscellaneous
 /.angular/cache
 .sass-cache/
@@ -41,4 +42,5 @@ testem.log
 .DS_Store
 Thumbs.db
 
+# other files
 package-lock.json

@@ -1,0 +1,20 @@
+<label for="input">Username</label>
+<br />
+<input
+  type="text"
+  id="input"
+  name="input"
+  [(ngModel)]="username"
+  (ngModelChange)="inputChange()"
+  class="form-control"
+/>
+<small id="emailHelp" class="form-text text-muted">{{ username }}</small>
+<br />
+<button
+  type="submit"
+  class="btn btn-primary"
+  (click)="buttonClicked()"
+  [disabled]="username === ''"
+>
+  Reset User
+</button>

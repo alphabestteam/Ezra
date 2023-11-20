@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-display-button',
@@ -8,6 +8,9 @@ import { Component } from '@angular/core';
 export class DisplayButtonComponent {
   message: string = 'Click me!';
   success: boolean = true;
+
+  @Output() messageInstance: EventEmitter<any> = new EventEmitter();
+
   changeText(): void {
     this.success = !this.success;
     if (this.success === true) {
@@ -15,5 +18,6 @@ export class DisplayButtonComponent {
     } else {
       this.message = 'Success!';
     }
+    this.messageInstance.emit(this.success);
   }
 }

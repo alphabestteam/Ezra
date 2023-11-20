@@ -1,16 +1,14 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <ol>
-        <li>Create two new Components (manually or with CLI): WarningAlert and SuccessAlert</li>
-        <li>Output them beneath each other in the AppComponent</li>
-        <li>Output a warning or success message in the Components</li>
-        <li>Style the Components appropriately (maybe some red/ green text?)</li>
-      </ol>
-      <p>Use external or internal templates and styles!</p>
-      <p>Feel free to create more components, nest them into each other or play around with different types of selectors!</p>
-    </div>
-  </div>
+<div *ngFor="let i of getArrayOfLength(amount)">
+  <ng-container *ngIf="!success">
+    <app-warning-alert></app-warning-alert>
+  </ng-container>
+  <ng-container *ngIf="success">
+    <app-success-alert></app-success-alert>
+  </ng-container>
 </div>
 
-<app-display-button></app-display-button>
+<app-display-button
+  (messageInstance)="receiveMessage($event)"
+></app-display-button>
+
+<app-submit (valueOfSubmit)="getAmount($event)"></app-submit>

@@ -6,7 +6,15 @@
   name="input"
   [(ngModel)]="username"
   (ngModelChange)="inputChange()"
+  class="form-control"
 />
+<small id="emailHelp" class="form-text text-muted">{{ username }}</small>
 <br />
-
-<button type="button" (click)="buttonClicked()" [disabled]="username === ''">Reset User</button>
+<button
+  type="submit"
+  class="btn btn-primary"
+  (click)="buttonClicked()"
+  [disabled]="username === ''"
+>
+  Reset User
+</button>

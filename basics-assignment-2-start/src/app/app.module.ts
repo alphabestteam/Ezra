@@ -9,5 +9,6 @@ import { InputFieldComponent } from './input-field/input-field.component';
   declarations: [AppComponent, InputFieldComponent],
   imports: [BrowserModule, FormsModule],
   providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

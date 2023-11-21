@@ -1,0 +1,14 @@
+<div *ngFor="let i of getArrayOfLength(amount)">
+  <ng-container *ngIf="!success">
+    <app-warning-alert></app-warning-alert>
+  </ng-container>
+  <ng-container *ngIf="success">
+    <app-success-alert></app-success-alert>
+  </ng-container>
+</div>
+
+<app-display-button
+  (messageInstance)="receiveMessage($event)"
+></app-display-button>
+
+<app-submit (valueOfSubmit)="getAmount($event)"></app-submit>

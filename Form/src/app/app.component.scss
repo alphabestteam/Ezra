@@ -1,0 +1,71 @@
+/* You can add global styles to this file, and also import other style files */
+.form {
+  width: 100%;
+  background: #fff;
+  padding: 30px;
+  max-width: 450px;
+  border-radius: 10px;
+  box-shadow: rgba(3, 3, 3, 0.1) 10px 0px 50px;
+}
+
+.field {
+  margin-bottom: 30px;
+}
+
+.label {
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #777;
+}
+
+.input {
+  width: 100%;
+  padding: 25px 15px;
+  border: 1px solid #f0f0f0;
+  transition: border-color 0.3s ease;
+  background: #f0f0f0;
+  border-radius: 5px;
+  font-size: 18px;
+  color: #555;
+  font-weight: 600;
+}
+
+.button {
+  background: #037ef3;
+  color: #fff;
+  font-weight: 600;
+  width: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 25px 15px;
+  border: 0;
+  font-size: 18px;
+  &:hover {
+    background: #0271da;
+  }
+}
+
+.ng-valid{
+  border-left: 5px solid #42a948; /* green */
+}
+.ng-invalid.ng-touched{
+  border-left: 5px solid #a94442; /* red */
+}
+.alert {
+  background-color: #fed3d3;
+  color: #820000;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+.form-group {
+  margin-bottom: 1rem;
+}
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+select {
+  width: 100%;
+  padding: 0.5rem;
+}

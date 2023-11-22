@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { FILMS } from '../star-wars-fake-db/film-data';
 import { Film } from '../star-wars-fake-db/interfaces';
 import { Subscription } from 'rxjs';
@@ -19,8 +19,8 @@ export class MovieCardComponentComponent implements OnInit {
 
   ngOnInit(): void {
     // needed to implement subscription so that the component will rerender when the router was called.
-    this.routeSubscription = this.route.params.subscribe((params) => {
-      const id = params['id'];
+    this.routeSubscription = this.route.params.subscribe((params: Params) => {
+      const id: string = params['id'];
 
       if (id === null) {
         this.movie_id = 1; // if there's no number in the url;

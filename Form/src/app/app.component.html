@@ -1,0 +1,63 @@
+<h1>Form Builder, Form Group, Form Control, Validators and ngsubmit</h1>
+
+<form class="form" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <div class="field">
+    <label class="label">username</label>
+    <input type="text" class="input" formControlName="username" required />
+    <div
+      *ngIf="
+        profileForm.get('username')?.invalid &&
+        (profileForm.get('username')?.dirty ||
+          profileForm.get('username')?.touched)
+      "
+      class="alert"
+    >
+      Username is required
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">email</label>
+    <input type="text" class="input" formControlName="email" required />
+    <div
+      *ngIf="
+        profileForm.get('email')?.invalid &&
+        (profileForm.get('email')?.dirty || profileForm.get('email')?.touched)
+      "
+      class="alert"
+    >
+      <div *ngIf="profileForm.get('email')?.errors?.['required']">
+        Email is required.
+      </div>
+      <div *ngIf="profileForm.get('email')?.errors?.['email']">
+        Enter valid email.
+      </div>
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">password</label>
+    <input type="text" class="input" formControlName="password" required />
+    <div
+      *ngIf="
+        profileForm.get('password')?.invalid &&
+        (profileForm.get('password')?.dirty ||
+          profileForm.get('password')?.touched)
+      "
+      class="alert"
+    >
+      Password is required
+    </div>
+  </div>
+
+  <div>
+    <button type="submit" class="button" [disabled]="!profileForm.valid">
+      Register
+    </button>
+  </div>
+</form>
+
+<div *ngIf="showFormValues">
+  <h2>Form Values:</h2>
+  <p>username: {{ profileForm.value.username }}</p>
+  <p>email: {{ profileForm.value.email }}</p>
+  <p>password: {{ profileForm.value.password }}</p>
+</div>

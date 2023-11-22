@@ -1,0 +1,41 @@
+.card {
+  background: url("../../assets/stars.png") center center fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: black;
+  border-radius: 10px;
+}
+
+.card-title {
+  color: #ffe81f; /* Yellow */
+}
+
+.card-text {
+  color: #ffe81f;
+  font-size: 30px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  animation: crawl 5s linear; /* Adjust duration as needed */
+}
+
+h1 {
+  font-size: 60px;
+}
+
+@keyframes crawl {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+// * {
+//     background: url('../../assets/stars.png') center center fixed;
+//     background-size: cover;
+//     background-repeat: no-repeat;
+//     background-color: black;
+// }

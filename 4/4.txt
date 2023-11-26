@@ -1,0 +1,19 @@
+docker run -d -v C:\Users\ezrab\OneDrive\Desktop\docker:/var/lib/mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD="" -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -e MYSQL_DATABASE=ezra --name ezradb mysql 
+
+added the -v ... part.
+
+than i connected the code to the beekeeper and ran this query:
+
+CREATE TABLE hod (id AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), age INT)
+
+
+when i try to recreate the table it tells me that that table already exists.
+
+
+
+
+
+
+
+
+

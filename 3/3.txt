@@ -1,0 +1,13 @@
+
+docker run -d -p 3306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -e MYSQL_DATABASE=ezra -e MYSQL_ROOT_PASSWORD --name ezradb mysql 
+
+part 2
+
+deleting container:
+
+docker container stop <name of container>
+
+docker container rm <name of container>
+
+
+tried restarting the container and it didn't connect.

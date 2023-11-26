@@ -1,0 +1,28 @@
+Q1: what is docker?
+A:  it's a way to run a program with specific requierments in a stable area.
+    it uses what's called "containers". 
+
+Q2: what is a docker image, and how is it made?
+A:  the readme telling the docker what configuration we need for the container.
+    3 ways:
+        1.	Docker pull registry/image
+        2.	Docer load -I image.tar
+        3.	Docker build -t name:tag <phs>
+
+Q3: what is a docker container, and how is it created?
+A:  is that actual machine, has an image (saying what should be in the container).
+    it is created by the image file. when you run docker run.
+
+Q4: what is the difference between docker image and docker container?
+A:  image is the template and the container is the actual program.
+
+Q5: what are evnironment variables?
+A:  they are constants available to any programs running in a docker container. 
+
+Q6: what are volumes?
+A:  connecting between a local folder and a docker folder.
+    used for syncing between the 2 folders.
+    use cases – reading and writing logs.
+
+
+

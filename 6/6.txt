@@ -1,0 +1,28 @@
+Q1: how does the layers mechanism speed the development time?
+
+A:  layers is the collection of all the commands that we're running
+    when we're creating an image (from, copy, cmd, workdir...).
+    every command/instruction is translated to an image layer.
+
+    this can speed up the development time because the way the layers work
+    is that if it ran a layer and it worked it won't run that layer again unless
+    it's been changed. making the development time much faster.
+
+
+Q2: which way is better?
+
+    RUN echo Hello i am the 'a' file > a &&\
+        echo Hello i am the 'b' file > c &&\
+        echo Hello i am the 'c' file > b &&\
+
+    RUN echo Hello i am the 'a' file > a
+    RUN echo Hello i am the 'b' file > c 
+    RUN echo Hello i am the 'c' file > b
+
+A:  I think the second way with the multiple runs is better, because
+    this way if one of them is changed we don't need to rerun all 3 of them,
+    rather just the changed one.
+
+
+Q3: how can i check how many layers are in an image?
+A:  I used the command: 'docker history <image_name>' and that returns all the layers in said image.

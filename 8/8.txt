@@ -1,0 +1,27 @@
+first step is to install tomcat:
+" docker pull tomcat"
+
+next we need to create a container with tomcat:
+" docker run -d -p 8080:8080 tomcat "
+
+to fix the 404 error we need to move the ~/webapps inside the container,
+
+I ran these commands once after another:
+
+" docker exec -it mytomcat /bin/bash "
+" mv webapps webapps2 "
+" mv webapps.dist/ webapps "
+" exit "
+
+
+to create the custom image for the tomcat, i'll open a dockerfile (as shown)
+and add the code.
+
+after that i'll build the dockerfile:
+
+" docker build -t custom-tomcat . "
+
+then i'll run it:
+
+" docker run -d -p 8080:8080 custom-tomcat "
+

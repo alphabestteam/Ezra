@@ -1,0 +1,11 @@
+FROM tomcat
+
+# navigating to the tomcat webapps directory
+WORKDIR /usr/local/tomcat 
+
+# the code that i want to add
+RUN mv webapps webapps2
+RUN mv webapps.dist/ webapps
+
+
+EXPOSE 8080

@@ -1,0 +1,15 @@
+started with running the app1.py and opening the URL link
+
+next I created a dockerfile (attached) and ran the commands:
+
+" docker build -t app1:1 . " ->
+" docker run -d --name docker_is_the_best app1:1 "
+
+next I stopped the container using: " docker container stop 55e30ac417ad "
+
+and removed the container using: " docker container rm docker_is_the_best "
+
+
+after that I ran: " docker run -d -v ${PWD}\logs:/app/logs -p 5000:5000 --name docker_is_the_best app1:1 "
+
+and it worked.

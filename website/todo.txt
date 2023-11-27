@@ -1,0 +1,3 @@
+- Donate sign
+- courses dropdown
+- fix smiling_big_text font

@@ -1,6 +1,5 @@
 FROM node
 
-
 # copying the rest of the code
 COPY .  /usr/src/app
 

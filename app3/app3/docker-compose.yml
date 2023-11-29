@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  app3:
+    # buliding the dockerfile to an image
+    build:
+      context: .
+      dockerfile: dockerfile
+
+    ports:
+      - "3000:3000"
+
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes: # creating a volume.
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
+    name: mongo-data
+

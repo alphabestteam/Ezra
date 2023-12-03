@@ -1,0 +1,9 @@
+1.  The object that's in charge of connecting between the 2
+    deployments is the service object.
+
+2.  once created the service files we'll run:
+        "kubectl apply -f frontend-service.yaml" - to apply the frontend-service file
+        "kubectl apply -f backend-service.yaml" - to apply the backend-service file
+
+    in order to see all services will run "kubectl get services".
+

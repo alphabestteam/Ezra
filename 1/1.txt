@@ -1,0 +1,24 @@
+a.  2 ways to create a logical work environment:
+    1.  using a YAML file
+    2.  using the k8s CLI (kubectl create namespace <namespace-name>)
+
+
+b.  in order to upload the app to the cluster i'm going to create 2 
+    yaml deployment files, one for the backend and one for the frontend.
+
+    once i've created them i'll run:
+        kubectl apply -f frontend-deployment.yaml - to "save" the frontend yaml file
+        kubectl apply -f backend-deployment.yaml - to "save" the backend yaml file
+
+    after that we can view all pods by typing "kubectl get pods" and it will show us 
+    a list of pods with all it's stats (that's were we can see if it's running)
+
+
+    the reason that I chose each pod to run 3 times is because that way there's more
+    availability, so if one of them crashes the others will take it's place.
+    as well having 3 pods allows k8s to distribute traffic more evenly.
+
+    However, I won't create more than that, because it will cost to much.
+
+
+    * i'm not creating a custom network because k8s deals with the pods networks in a very good way.

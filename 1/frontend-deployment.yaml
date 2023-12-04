@@ -1,0 +1,19 @@
+apiVersion: apps/v1 # specifies the API version for the deployment object
+kind: Deployment  # what this yaml is.
+metadata:
+  name: frontend-deployment # the name if the deployment
+spec: # setting the desired times i wanna deployment to be running 
+  replicas: 3
+  selector: # defines the labels used to select which pods belong to this deployment.
+    matchLabels: # tells all pods with the label "frontend" that they belong to this deployment.
+      app: frontend 
+  template: # defines the pods template for this deployment.
+    metadata:
+      labels: 
+        app: frontend
+    spec: # specifies the pod specifications.
+      containers:
+        - name: frontend-container  # the name of the container
+          image: ghcr.io/expruc/kubernetes-gradutaion-drill/k8s-final-drill:frontend  # the image location
+          ports:  # specifies the ports to open in this container.
+            - containerPort: 80 # this container listens on port 80.

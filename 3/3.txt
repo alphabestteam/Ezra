@@ -4,4 +4,10 @@
     basically saying that the Ingress is the object that will make the cluster accessible by 
     the internet user.
 
+2.  once i've created the ingress file, i need to run it, 
+    1. minikube start
+    2. kubectl get svc (to make sure the service is running)
+    3. minikube service frontend-service --url
+    4. click on the url that they give you
+
     

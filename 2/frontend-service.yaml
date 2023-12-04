@@ -1,11 +1,12 @@
-apiVersion: v1 
+apiVersion: v1
 kind: Service # what kind of yaml file this is.
 metadata:
-  name: frontend-service  # gives the service a name (this name will be used in the DNS to access this service)
+  name: frontend-service # gives the service a name (this name will be used in the DNS to access this service)
 spec: # gives the desired state of the service
   selector: # will give it's service only to pods that have the label "app: frontend".
     app: frontend
   ports:
     - protocol: TCP
-      port: 80  # the service can be accessed on this port externally.
+      port: 80 # the service can be accessed on this port externally.
       targetPort: 80 # the selected pods port (we need to declare the same port on the pods)
+  type: NodePort

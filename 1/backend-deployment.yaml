@@ -17,3 +17,6 @@ spec:
           image: ghcr.io/expruc/kubernetes-gradutaion-drill/k8s-final-drill:backend
           ports:
             - containerPort: 3000
+          env:
+            - name: PORT
+              value: "3000"

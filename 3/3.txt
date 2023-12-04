@@ -1,0 +1,7 @@
+1.  the right object for us to use would be the Ingress object.
+    the point of the ingress object is to "expose HTTP and HTTPS routes from outside
+    the cluster to services within the cluster"
+    basically saying that the Ingress is the object that will make the cluster accessible by 
+    the internet user.
+
+    

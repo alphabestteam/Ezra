@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Ingress 
+metadata:
+  name: frontend-ingress  # the name of this object
+  
+  # will send only a valid route to the backend (/),
+  # and if a non valid option is entered it will 
+  # convert it to a valid option (/test -> /)
+  annotations: 
+   nginx.ingress.
+   kubernetes.io/
+   rewrite-target: /
+spec:
+  rules:
+  - http:
+    paths:  
+      - path: /
+        pathType: Prefix # will match any request that has "/" at the beginning (all requests)
+        backend:  # the backend service to forward the traffic to
+          service:  # the front end service
+            name: frontend-service
+            port: # what port the service is listening on.
+              number: 80
+

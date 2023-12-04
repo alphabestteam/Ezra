@@ -1,0 +1,14 @@
+1.  if we want to scale the amount of backend pods, we'll use the 
+    scale command.
+
+        "kubectl scale deployment backend-deployment --replicas=5"
+
+2.
+        "kubectl scale deployment frontend-deployment --replicas=5"
+
+3.  the point of the scale command is to create more pods.
+    we'd create more pods if we want to scale the program and have more 
+    pods running at once, or the opposite, if you know that there's a down time
+    and you don't need as many pods, you can down scale the pods.
+    those are 2 of the many common uses of the scale command.
+    

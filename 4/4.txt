@@ -1,0 +1,11 @@
+the issue with how we created the environment variables
+is that if we create a lot of variables or if theres sensitive
+info, dealing with them in the yaml can become annoying.
+
+so to deal with such issues it's good practice to create ConfigMaps and Secretes
+ConfigMaps - stores data in key-value pairs.
+Secretes - holds sensitive data.
+
+I created 3 files: ConfigMaps-backend, ConfigMaps-frontend, secret-frontend
+once they're created we'll change the deployment files accordantly.
+once all files are changed we'll apply the deployment files and restart the url link.

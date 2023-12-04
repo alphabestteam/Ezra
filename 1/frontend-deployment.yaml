@@ -17,8 +17,8 @@ spec: # setting the desired times i wanna deployment to be running
           image: ghcr.io/expruc/kubernetes-gradutaion-drill/k8s-final-drill:frontend  # the image location
           ports:  # specifies the ports to open in this container.
             - containerPort: 80 # this container listens on port 80.
-          env:  # env variables that i need to add to the container.
-            - name: PORT
-              value: "80" 
-            - name: BACKENDURL # needs to declare the backend url
-              value: "http://backend-service:3000"
+          envFrom: # env variables that i need to add to the container.
+            - configMapRef:
+                name: frontend-config
+            - secretRef:
+                name: frontend-secret

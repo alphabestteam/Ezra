@@ -1,0 +1,2 @@
+to get all running pods run the script as giving:
+    "get_running_pods.ps1"

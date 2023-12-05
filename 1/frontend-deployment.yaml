@@ -28,4 +28,9 @@ spec: # setting the desired times i wanna deployment to be running
               cpu: "10m"       # Maximum CPU limit
             requests:
               memory: "16Mi"   # Initial memory request
-              cpu: "1m"       # Initial CPU request
+              cpu: "1m"       # Initial CPU 
+          readinessProbe: # you can add httpGet: if you wanna check readiness against a url
+            tcpSocket:  # what port to check
+              port: 80 
+            initialDelaySeconds: 5  # Wait for 5 seconds before starting the probe
+            periodSeconds: 10        # Check the readiness every 10 seconds

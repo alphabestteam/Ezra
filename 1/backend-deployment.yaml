@@ -22,8 +22,13 @@ spec:
                 name: backend-config
           resources:
             limits:
-              memory: "50Mi"   # Maximum memory limit
-              cpu: "10m"       # Maximum CPU limit
+              memory: "50Mi"   
+              cpu: "10m"       
             requests:
-              memory: "16Mi"   # Initial memory request
-              cpu: "1m"       # Initial CPU request
+              memory: "16Mi"  
+              cpu: "1m"       
+          readinessProbe: 
+            tcpSocket:
+              port: 3000 
+            initialDelaySeconds: 5 
+            periodSeconds: 10      

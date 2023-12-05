@@ -1,0 +1,6 @@
+1.  It's a thing that allows you to control when a container within a pod is ready to start accepting traffic.
+
+2.  if the readiness probes are not created we can run into issues such as:
+    -   containers that aren't fully operational will get blasted with traffic causing errors.
+    -   readiness probes also act as health check and without it there can be a error that won't be detected for a long time.
+

@@ -1,0 +1,17 @@
+1.  i've added an image showing the cpu and memory usage.
+    to get to there I first needed to enable metrics-server:
+    
+        "minikube addons enable metrics-server"
+
+    once that was done I could view the stats by running:
+
+        "kubectl top pods"
+
+
+2.  To limit the resources for a pod we'll do so in the deployment.yaml file. (see changes)
+
+    i've started off the resources at the highest number that a pod has by default.
+    and i've set a limit on the conservative side. However, if i see that the program doesn't 
+    reach that limit ever, i'll decrease the limit, and vise versa.
+
+    

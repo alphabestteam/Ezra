@@ -22,3 +22,10 @@ spec: # setting the desired times i wanna deployment to be running
                 name: frontend-config
             - secretRef:
                 name: frontend-secret
+          resources:
+            limits:
+              memory: "50Mi"   # Maximum memory limit
+              cpu: "10m"       # Maximum CPU limit
+            requests:
+              memory: "16Mi"   # Initial memory request
+              cpu: "1m"       # Initial CPU request

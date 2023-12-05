@@ -20,3 +20,10 @@ spec:
           envFrom:
             - configMapRef:
                 name: backend-config
+          resources:
+            limits:
+              memory: "50Mi"   # Maximum memory limit
+              cpu: "10m"       # Maximum CPU limit
+            requests:
+              memory: "16Mi"   # Initial memory request
+              cpu: "1m"       # Initial CPU request
